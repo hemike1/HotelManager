@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../../assets/css/navbar.css">
 </head>
 <body>
-    <nav>
+    <nav class="menu">
         <ul>
             <li>
                 <a href="#">
@@ -17,8 +17,21 @@
 
             </li>
             <li>
-                <a href="">
+                <a href="#">
+                    <i class="fa-regular fa-circle-question"></i>
                     About
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-regular fa-envelope"></i>
+                    Email us!
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="fa-regular fa-star-sharp"></i>
+                    Write a review!
                 </a>
             </li>
             <li>
