@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10279358-664d-43c1-9fa4-37842e920cae" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/useful stuff.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/layout/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/layout/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/layout/navbar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/css/navbar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/js/fontawesome.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/layout/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/layout/navbar.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "C:/Users/koron/Desktop/HotelManager",
+    "last_opened_file_path": "C:/Users/koron/Desktop/HotelManager/assets/js",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -52,6 +49,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\koron\Desktop\HotelManager\assets\js" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +66,7 @@
       <workItem from="1674460432437" duration="2406000" />
       <workItem from="1674464155400" duration="809000" />
       <workItem from="1674471917877" duration="2110000" />
-      <workItem from="1674543937055" duration="3177000" />
+      <workItem from="1674543937055" duration="4604000" />
     </task>
     <servers />
   </component>
