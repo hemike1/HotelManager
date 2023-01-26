@@ -1,22 +1,17 @@
-.grid-container {
-    width: 90vw;
-    margin: 0 auto;
-    height: 90vh;
-    display: flex;
-    border: 2px solid rgba(0, 0, 0, .4);
-    transition: 1s ease;
+body {
+    font-family: 'Playfair Display', serif;
 }
 
 .sidebar {
-    width: 30%;
+    width: 5%;
     height: 100%;
-    background-color: #54a;
+    background-color: hsl(0, 100%, 20%);
     transition: 1s ease;
-    position: relative;
+    position: relative
 }
 
 .main-content {
-    width: 70%;
+    width: 80%;
     height: 100%;
     background-color: #ccc;
     transition: 1s ease;
@@ -27,7 +22,7 @@
 }
 
 .sidebar_small {
-    width: 10%;
+    width: 20%;
 }
 
 button {
@@ -37,8 +32,18 @@ button {
     width: 40px;
     border-radius: 50%;
     box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
-    left: 100%;
+    left: 80%;
     top: 2rem;
     transform: translateX(-50%);
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: hsl(50, 100%, 33%);
+    font-size: 1.5em;
+}
+
+.nobreak {
+    overflow: hidden;
 }
