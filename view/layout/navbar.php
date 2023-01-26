@@ -11,11 +11,11 @@
             <button>M</button>
             <div class="nobreak">
                 <nobr>
-                    <a href="#" style="white-space: pre"><i class="fa-regular fa-house"></i>&#9;Home</a><br>
-                    <a href="#" style="white-space: pre"><i class="fa-regular fa-book"></i>&#9;Reservation</a><br>
-                    <a href="#" style="white-space: pre"><i class="fa-regular fa-location-question"></i>&#9;Services</a><br>
-                    <a href="#" style="white-space: pre"><i class="fa-regular fa-star"></i>&#9;Leave a review</a><br>
-                    <a href="#" style="white-space: pre"><i class="fa-regular fa-right-to-bracket"></i>&#9;Log-In</a>
+                    <div class="valami"><a href="#" style="white-space: pre"><i class="fa-regular fa-house"></i>&#9;Home</a></div>
+                    <div class="valami"><a href="#" style="white-space: pre"><i class="fa-regular fa-book"></i>&#9;Reservation</a></div>
+                    <div class="valami"><a href="#" style="white-space: pre"><i class="fa-regular fa-location-question"></i>&#9;Services</a></div>
+                    <div class="valami"><a href="#" style="white-space: pre"><i class="fa-regular fa-star"></i>&#9;Leave a review</a></div>
+                    <div class="valami"><a href="#" style="white-space: pre"><i class="fa-regular fa-right-to-bracket"></i>&#9;Log-In</a></div>
                 </nobr>
             </div>
         </div>
