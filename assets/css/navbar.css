@@ -3,7 +3,7 @@ body {
 }
 
 .sidebar {
-    width: 5%;
+    width: 3%;
     height: 100%;
     background-color: hsl(0, 100%, 20%);
     transition: 1s ease;
@@ -22,7 +22,7 @@ body {
 }
 
 .sidebar_small {
-    width: 20%;
+    width: 15%;
 }
 
 button {
@@ -32,7 +32,7 @@ button {
     width: 40px;
     border-radius: 50%;
     box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
-    left: 80%;
+    left: 100%;
     top: 2rem;
     transform: translateX(-50%);
     cursor: pointer;
@@ -45,5 +45,6 @@ a {
 }
 
 .nobreak {
+    padding-left: .8em;
     overflow: hidden;
 }

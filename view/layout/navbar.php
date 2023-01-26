@@ -8,15 +8,14 @@
 </head>
 <body>
         <div class="sidebar">
-            <button>m</button>
+            <button>M</button>
             <div class="nobreak">
                 <nobr>
-                    <a href="#">Home</a><br>
-                    <a href="#">Reservation</a><br>
-                    <a href="#">Services</a><br>
-                    <a href="#">Leavea review</a><br>
-                    <a href="#"></a>
-                    <a href="#"></a>
+                    <a href="#" style="white-space: pre"><i class="fa-regular fa-house"></i>&#9;Home</a><br>
+                    <a href="#" style="white-space: pre"><i class="fa-regular fa-book"></i>&#9;Reservation</a><br>
+                    <a href="#" style="white-space: pre"><i class="fa-regular fa-location-question"></i>&#9;Services</a><br>
+                    <a href="#" style="white-space: pre"><i class="fa-regular fa-star"></i>&#9;Leave a review</a><br>
+                    <a href="#" style="white-space: pre"><i class="fa-regular fa-right-to-bracket"></i>&#9;Log-In</a>
                 </nobr>
             </div>
         </div>
@@ -33,5 +32,6 @@
             sidebar.classList.toggle('sidebar_small');
             mainContent.classList.toggle('main-content_large');
         }
+
     </script>
 </body>
