@@ -15,8 +15,8 @@ $database = new Database();
 	    <?php
 	    	if(!isset($_SESSION[""])) {
 	    		echo '<form action="" method="POST">
-	    				Felhasználónév: <input type="text" name="felhnev" placeholder="pl.:kiskarcsi123" required><br>
-	    				Jelszó: <input type="password" name="jelszo" required><br>
+	    				<input type="text" name="felhnev" placeholder="Felhasználónév" required><br>
+	    				<input type="password" name="jelszo" placeholder="Jelszó" required><br>
 	    				<input type="submit" value="Belépés" class="buttons">
 	    			</form>';
 	    	} else {

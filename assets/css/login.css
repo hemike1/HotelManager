@@ -1,14 +1,63 @@
-body {
-    font-family: 'Playfair Display', serif;
+html {
+    background: url("../images/freeHotelImage.jpg") no-repeat center;
+    backdrop-filter: blur(4px);
 
 }
 
-.panel {
+body {
     margin: 0 auto;
-    width: 350px;
+    font-family: 'Playfair Display', serif;
+    backdrop-filter: blur(4px);
+    background: transparent;
+}
+
+/*.panel {
+    margin: 0 auto;
+    width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2rem 2.5rem;
+}*/
+
+form {
+    padding: 10px 10px 10px 10px;
+    width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background-color: hsl(0, 100%, 20%);
 }
 
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+:-moz-placeholder {
+    text-align: center;
+}
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: hsl(0, 100%, 20%);
+    color: hsl(50, 100%, 33%);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+input[type="submit"]:hover {
+    transition: all 0.2s ease;
+    color: hsl(5, 100%, 21%);
+}
