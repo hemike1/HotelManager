@@ -13,9 +13,12 @@ class Database {
 	}
 
 	public function getUsers(){
-		$query = "SELECT * FROM".$this->prefix."registered";
+		$query = "
+		SELECT * FROM".$this->prefix."registered;
+		INNER JOIN ".$this->prefix."permissions ON ".$this->prefix."permissions.permissionId = ".$this->prefix."registered.registeredPermission;
+		";
 		$result = $this->db->query($query);
 		return $result->fetch_all(MYSQLI_ASSOC);
 	}
-	
+
 }
