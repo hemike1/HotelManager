@@ -11,22 +11,25 @@ $database = new Database();
 	<link rel="stylesheet" href="../assets/css/login.css">
 </head>
 <body>
-    <div class="panel">
-	    <?php
-	    	if(!isset($_SESSION[""])) {
-	    		echo '<form action="" method="POST">
-	    				<input type="text" name="felhnev" placeholder="Felhasználónév" required><br>
-	    				<input type="password" name="jelszo" placeholder="Jelszó" required><br>
-	    				<input type="submit" value="Belépés" class="buttons">
-	    			</form>';
-	    	} else {
-	    		echo '<form action="" method="post" enctype="multipart/form-data" style="text-align: center;">
-	    				Válaszd ki a profilképet amit fel szeretnél tölteni:<br>
-	    				<input type="file" name="profilkep" id="profilkep">
-	    				<br><input type="submit" class="buttons" value="Upload Image" name="submit">
-	    			</form>';
-	    	}
-	    ?>
+    <div class="background-image"></div>
+    <div class="content">
+        <div class="panel">
+            <?php
+                if(!isset($_SESSION[""])) {
+                    echo '<form action="" method="POST">
+                            <input type="text" name="felhnev" placeholder="Felhasználónév" required><br>
+                            <input type="password" name="jelszo" placeholder="Jelszó" required><br>
+                            <input type="submit" value="Belépés" class="buttons">
+                        </form>';
+                } else {
+                    echo '<form action="" method="post" enctype="multipart/form-data" style="text-align: center;">
+                            Válaszd ki a profilképet amit fel szeretnél tölteni:<br>
+                            <input type="file" name="profilkep" id="profilkep">
+                            <br><input type="submit" class="buttons" value="Upload Image" name="submit">
+                        </form>';
+                }
+            ?>
+        </div>
     </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

@@ -1,16 +1,23 @@
-html {
-    background: url("../images/freeHotelImage.jpg") no-repeat center;
-    backdrop-filter: blur(4px);
-
-}
-
 body {
-    margin: 0 auto;
     font-family: 'Playfair Display', serif;
-    backdrop-filter: blur(4px);
     background: transparent;
 }
 
+.background-image {
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: url("../images/freeHotelImage.jpg") no-repeat center;
+    -webkit-filter: blur(5px);
+    -ms-filter: blur(5px);
+    height: 100%;
+}
+
+.content {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
 /*.panel {
     margin: 0 auto;
     width: 500px;
