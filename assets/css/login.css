@@ -1,3 +1,14 @@
-body{
+body {
     font-family: 'Playfair Display', serif;
+
 }
+
+.panel {
+    margin: 0 auto;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2.5rem;
+}
+
