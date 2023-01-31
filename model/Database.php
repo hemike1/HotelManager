@@ -7,7 +7,7 @@ class Database {
 	private $username = "HMS";
 	private $password = "I-e]R*pvkh26!R0G";
 	private $dbname = "hms";
-	private $prefix = "xc5_";
+	private $prefix = "xcf5_";
 	public function __construct(){
 		$this->db = new mysqli($this->connection, $this->username, $this->password, $this->dbname);
 	}
