@@ -14,18 +14,12 @@ body {
 }
 
 .content {
+    transform: translateY(25%);
     position: fixed;
+    height: 100%;
     left: 0;
     right: 0;
 }
-/*.panel {
-    margin: 0 auto;
-    width: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 2.5rem;
-}*/
 
 form {
     padding: 10px 10px 10px 10px;
@@ -33,20 +27,30 @@ form {
     margin: 50px auto;
     text-align: center;
     background-color: hsl(0, 100%, 20%);
+    border-radius: 30px;
+    border: 10px hsl(50, 100%, 33%);
 }
 
-input[type="text"], input[type="password"] {
+h1 {
+    color: hsl(50, 100%, 33%);
+    text-align: center;
+    font-size: 72px;
+}
+
+input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
-    border: none;
     border-radius: 30px;
     font-size: 18px;
     text-align: center;
+    background-color: hsl(0, 100%, 20%);
+    color: hsl(50, 100%, 33%);
 }
 
 ::-webkit-input-placeholder {
     text-align: center;
+    color: hsl(50, 100%, 33%);
 }
 
 :-moz-placeholder {
@@ -55,16 +59,17 @@ input[type="text"], input[type="password"] {
 input[type="submit"] {
     width: 100%;
     padding: 10px;
-    background-color: hsl(0, 100%, 20%);
+    background-color: hsl(20, 100%, 24%);
     color: hsl(50, 100%, 33%);
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-size: 18px;
     cursor: pointer;
-    transition: all .2s ease;
+    transition: all .3s ease;
 }
 
 input[type="submit"]:hover {
-    transition: all 0.2s ease;
-    color: hsl(5, 100%, 21%);
+    transition: all 0.3s ease;
+    color: hsl(0, 100%, 20%);
+    background-color: hsl(50, 100%, 33%);
 }
