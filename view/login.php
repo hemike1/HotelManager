@@ -1,4 +1,7 @@
 <?php
+include "../model/Database.php";
+
+$database = new Database();
 ?>
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
