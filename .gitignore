@@ -1,2 +1,5 @@
-.idea/
+*/.idea/workspace.xml
+*/.idea/tasks.xml
 useful stuff.txt
+.idea/workspace.xml
+*.xml
