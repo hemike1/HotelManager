@@ -25,8 +25,7 @@ class Database {
 	}
 
 	/*
-	Got this from @tokrist. He stole it aswell. (nah, he wrote it)
-	https://pastebin.com/pRJUM3Yj?fbclid=IwAR0nThxfZhc0bAfgGIGSv5BeVLDyXbgUmquRRGVGWK-gdR3WIHTJ8u_xmFA
+	Got this from @tokrist. (nah, he wrote it)
 	*/
 	public function passwordHash(string $input):string {
 		return password_hash($input, PASSWORD_ARGON2ID, ['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 3]);

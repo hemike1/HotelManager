@@ -8,7 +8,7 @@ $database = new Database();
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	<link rel="stylesheet" href="../assets/css/login.css">
+	<link rel="stylesheet" href="../../Assets/css/login.css">
 </head>
 <body>
     <div class="background-image"></div>
@@ -19,7 +19,7 @@ $database = new Database();
                 <?php
                     if(!isset($_SESSION[""])) {
                         echo '<form action="" method="POST">
-                                <input type="email" name="felhnev" placeholder="E-Mail" required><br>
+                                <input type="email" name="email" placeholder="E-Mail" required><br>
                                 <input type="password" name="jelszo" placeholder="Jelszó" required><br>
                                 <input type="submit" value="Belépés" class="buttons">
                             </form>';
