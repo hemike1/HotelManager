@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+
+#notfound .notfound {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-55%,-55%);
+}
+
+#notfound {
+    background: hsl(200, 5%, 11%);
+    position: relative;
+    height: 100vh;
+}
+
+.notfound {
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.notfound .notfound-404 {
+    height: 122px;
+    line-height: 122px;
+}
+
+h1 {
+    color: hsl(0, 0%, 90%);
+    display: block;
+    font-size: 12em;
+    margin-block-start: .67em;
+    margin-block-end: .67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+p {
+    color: hsl(0, 0%, 90%);
+    padding: 15px 0px;
+}
+
+a {
+    text-decoration: none;
+    color: hsl(0, 0%, 90%);
+    padding: 10px 30px 10px 30px;
+    border: solid hsl(0, 0%, 90%);
+}

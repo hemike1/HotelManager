@@ -10,14 +10,14 @@ body {
     position: relative
 }
 
-.main-content {
+.sideBarMain-content {
     width: 80%;
     height: 100%;
     background-color: #ccc;
     transition: 1s ease;
 }
 
-.main-content_large {
+.sideBar-main-content_large {
     width: 90%;
 }
 
@@ -25,7 +25,13 @@ body {
     width: 15%;
 }
 
-button {
+.sideBarA {
+    text-decoration: none;
+    color: hsl(50, 100%, 43%);
+    font-size: 1.5em;
+}
+
+.sideBarButton {
     position: absolute;
     border: none;
     height: 40px;
@@ -33,21 +39,15 @@ button {
     border-radius: 50%;
     box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
     left: 100%;
-    top: 2rem;
+    top: 45%;
     transform: translateX(-50%);
     cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: hsl(50, 100%, 33%);
-    font-size: 1.5em;
 }
 
 .nobreak {
     overflow: hidden;
 }
 .valami {
-    border-bottom: 1px solid hsl(50, 100%, 33%);
+    border-bottom: 1px solid hsl(50, 100%, 43%);
     padding-left: .8em;
 }

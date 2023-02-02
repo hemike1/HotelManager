@@ -1,1 +1,0 @@
-adatbázisban elmenthető számlázási adatok - kapcsolási tábla a registered és invoice között
