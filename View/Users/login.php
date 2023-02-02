@@ -17,7 +17,7 @@
                                 <input type="email" name="email" placeholder="E-Mail" required><br>
                                 <input type="password" name="jelszo" placeholder="Jelszó" required><br>
                                 <input type="submit" value="Belépés" class="buttons">
-                                <p>Vagy <a>regisztráljon!</a></p>
+                                
                             </form>';
                     } else {
                         echo '<form action="" method="post" enctype="multipart/form-data" style="text-align: center;">

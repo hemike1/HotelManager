@@ -1,0 +1,6 @@
+Register page
+main page
+reservation page
+admin panel
+more styling
+MOAR php!!!!!!
