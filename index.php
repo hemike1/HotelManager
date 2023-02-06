@@ -1,7 +1,8 @@
 <?php
-
+    require 'Model/User.php';
 	require 'Model/Database.php';
 	$db = new Database();
+    $register = new User($db);
 
 	spl_autoload_register(function ($className) {
 		require_once 'Controller/'.$className.'.php';

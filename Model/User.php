@@ -1,8 +1,9 @@
 <?php
-    require_once 'Database.php';
+
     class User {
+
         private $db;
-        function __construct($db) {
+        public function __construct($db) {
             $this->db = $db;
         }
 
@@ -11,7 +12,7 @@
                 $sql = 'SELECT registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered 
                 WHERE registeredEmail = '.$_POST['email'];
 
-                if($result = $this->db->databaseQuery($sql)) {
+                if($result = $this->db->dbQuery($sql)) {
                     if($row = $result->fetch_assoc()) {
                         if($row['registeredPassword'] == passwordHash($password)) {
                             $errorCode = 2; // Successful login
@@ -28,11 +29,13 @@
             }
         }
 
+        //useless
         public function register($firstName, $lastName, $email, $password) {
             if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])){
                 $sql = 'INSERT INTO '.$GLOBALS['prefix'].'registered 
                 (registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES
                 (null, $firstname, $lastname, $email, $password, 1)';
+                $this->db->dbQuery($sql);
             }
         }
 

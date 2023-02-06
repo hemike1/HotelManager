@@ -7,8 +7,6 @@ class Database {
 	private $username = "HMS";
 	private $password = "I-e]R*pvkh26!R0G";
 	private $dbname = "hms";
-
-
 	private string $hashKey = "O2/6b6q*kdNzjBZQ";
 
 	public function __construct() {
@@ -17,8 +15,8 @@ class Database {
 	}
 
 	//To use "databaseQuery" function as to pull any request from the SQL server
-	public function databaseQuery($sqlQuery) {
-		$result = $this->conn->query($sqlQuery);
+	public function dbQuery($sql) {
+		$result = $this->conn->query($sql);
 		if($result!=null){
 			return $result;
 		} else {
