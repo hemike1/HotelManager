@@ -7,7 +7,7 @@
 		require_once 'Controller/'.$className.'.php';
 	});
 
-	session_start();
+    session_start();
 
 	$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	switch($request) {
@@ -15,6 +15,10 @@
 			$controller = new LoginController();
 			$controller->login();
 			break;
+        case '/register';
+            $controller = new RegisterController();
+            $controller->register();
+            break;
 		default:
 			http_response_code(404);
 			include('View/Users/404.php');

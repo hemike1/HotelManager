@@ -7,29 +7,28 @@
 </head>
 <body>
     <div class="background-image"></div>
-    <div class="content">
         <div class="panel">
-            <div class="maindiv">
+            <div class="title">
                 <h1>Üdvözöljük!</h1>
-                <?php
-                    if(!isset($_SESSION[""])) {
-                        echo '<form action="" method="POST">
-                                <input type="email" name="email" placeholder="E-Mail" required><br>
-                                <input type="password" name="jelszo" placeholder="Jelszó" required><br>
-                                <input type="submit" value="Belépés" class="buttons">
-                                
-                            </form>';
-                    } else {
-                        echo '<form action="" method="post" enctype="multipart/form-data" style="text-align: center;">
-                                Válaszd ki a profilképet amit fel szeretnél tölteni:<br>
-                                <input type="file" name="profilkep" id="profilkep">
-                                <br><input type="submit" class="buttons" value="Upload Image" name="submit">
-                            </form>';
-                    }
-                ?>
+            </div>
+            <div class="content">
+            <?php
 
+                if(!isset($_SESSION[""])) {
+                    echo '<form action="" method="POST">
+                            <input type="email" name="email" placeholder="E-Mail" required><br>
+                            <input type="password" name="password" placeholder="Jelszó" required><br>
+                            <input type="submit" value="Belépés" class="buttons">
+                            <a href="/register">Regisztrálás</a>
+                             
+                        </form>';
+                } else {
+                    echo '<button href="/home">Folytatás</button>';
+                }
+
+
+            ?>
             </div>
         </div>
-    </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
