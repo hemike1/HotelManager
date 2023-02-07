@@ -37,6 +37,10 @@ class Database {
 		}
 	}
 
+	public function prepare($sql) {
+		return $this->conn->prepare($sql);
+	}
+
 	/*
 	Got this from @tokrist. (nah, he wrote it) ((nah its not his))
 	*/

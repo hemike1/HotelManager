@@ -16,6 +16,10 @@
 			$controller = new LoginController();
 			$controller->login();
 			break;
+		case '/login':
+			$controller = new LoginController();
+			$controller->login();
+			break;
         case '/register';
             $controller = new RegisterController();
             $controller->register();

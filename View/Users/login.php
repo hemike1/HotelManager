@@ -1,3 +1,9 @@
+<?php
+    require_once 'Model/User.php';
+    require_once 'Model/Database.php';
+    $db = new Database();
+    $login = new User($db);
+?>
 <head>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,9 +32,21 @@
                     echo '<button href="/home">Folytatás</button>';
                 }
 
-                if(isset($_POST['email']) && isset($_POST['password'])) {
-                    $login = $User->checkLogin();
-                }
+			    if(isset($_POST['email']) && isset($_POST['password'])) {
+			    	$login = $login->checkLogin($_POST['email'], $_POST['password']);
+                    print_r($_SESSION);
+                    switch($login){
+                        case 0:
+                            echo 'Nincs ilyen email';
+                            break;
+                        case 1:
+                            echo 'Sikertelen belépés';
+                            break;
+                        case 2:
+                            echo 'Sikeres bejelentkezés';
+                            break;
+                    }
+			    }
 
             ?>
             </div>
