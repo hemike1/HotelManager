@@ -1,6 +1,6 @@
 <?php
-    require 'Model/User.php';
-	require 'Model/Database.php';
+    require_once 'Model/User.php';
+	require_once 'Model/Database.php';
 	$db = new Database();
     $register = new User($db);
 

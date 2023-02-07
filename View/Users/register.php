@@ -24,30 +24,15 @@
                     <a href="/">Vissza</a>
                 </form>
                 <?php
+                //print_r($_POST);
+				if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])) {
+                    $firstName = $_POST['firstname'];
+                    $lastName = $_POST['lastname'];
+                    $email = $_POST['email'];
+                    $password = $_POST['password'];
+                    $register->register($firstName, $lastName, $email, $password);
+                }
 
-                    $sql = 'SELECT registeredEmail FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = '.$_POST['email'];
-                    $result = $db->dbQuery($sql);
-                    if(num_rows($result)>0){
-                        echo 'Email address already in use!';
-                    } else {
-                        if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])){
-                            $firstname = $_POST['firstname'];
-                            $lastname = $_POST['lastname'];
-                            $email = $_POST['email'];
-                            $password = $_POST['password'];
-
-
-                            $sql = 'INSERT INTO '.$GLOBALS['prefix'].'registered(registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES 
-                            (null, '.$firstname.', '.$lastname.', '.$email.', '.$password.', 1)';
-
-                            if($db->dbQuery($sql)){
-                                echo 'Registration successful';
-                            } else {
-                                echo 'There was an error in the registration. Check your credentials!';
-                            }
-                        }
-                    }
-                    print_r ($_POST);
                 ?>
             </div>
         </div>

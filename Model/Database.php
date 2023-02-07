@@ -10,17 +10,30 @@ class Database {
 	private string $hashKey = "O2/6b6q*kdNzjBZQ";
 
 	public function __construct() {
-		$this->conn = new mysqli($this->connection, $this->username, $this->password, $this->dbname);
-        $GLOBALS['prefix'] = "xcf5_";
+		try{
+			$this->conn = new mysqli($this->connection, $this->username, $this->password, $this->dbname);
+
+		} catch (Exception $E){
+			echo $E;
+		}
+		$GLOBALS['prefix'] = "xcf5_";
 	}
 
 	//To use "databaseQuery" function as to pull any request from the SQL server
 	public function dbQuery($sql) {
 		$result = $this->conn->query($sql);
-		if($result!=null){
+		print_r($result);
+		if($result->num_rows > 0){
 			return $result;
 		} else {
-			return $hiba = "Hiba volt a lekérdezésben! db.php";
+			return "Hiba volt az adatbázissal! db.php";
+		}
+	}
+
+	public function dbInsert($sql) {
+		if($this->conn->query($sql) === true) {return null;}
+		else {
+			return 'Anyád';
 		}
 	}
 

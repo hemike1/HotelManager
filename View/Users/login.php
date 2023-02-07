@@ -14,7 +14,7 @@
             <div class="content">
             <?php
 
-                if(!isset($_SESSION[""])) {
+                if(!isset($_SESSION["name"])) {
                     echo '<form action="" method="POST">
                             <input type="email" name="email" placeholder="E-Mail" required><br>
                             <input type="password" name="password" placeholder="Jelszó" required><br>
@@ -26,6 +26,9 @@
                     echo '<button href="/home">Folytatás</button>';
                 }
 
+                if(isset($_POST['email']) && isset($_POST['password'])) {
+                    $login = $User->checkLogin();
+                }
 
             ?>
             </div>
