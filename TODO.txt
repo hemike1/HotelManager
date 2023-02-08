@@ -4,3 +4,23 @@ reservation page
 admin panel
 more styling
 MOAR php!!!!!!
+
+Booking system: A booking system that allows users to easily check availability, select a room, and make a reservation.
+
+Room descriptions: Detailed descriptions of each room type, including size, amenities, and photos.
+
+Room rates: A clear display of the current room rates, along with any promotions or discounts that may be available.
+
+Special events and packages: Information on special events and packages that the hotel may offer, such as romantic getaways, spa packages, and adventure tours.
+
+Location and directions: Information on the hotel's location, along with detailed directions and a map to help guests find their way.
+
+Reviews and ratings: A system that allows guests to rate and review their stay at the hotel, as well as to read reviews from other guests.
+
+Contact information: Detailed contact information for the hotel, including phone numbers, email addresses, and a contact form for guests to get in touch.
+
+Social media links: Links to the hotel's social media pages, such as Facebook, Twitter, and Instagram, to allow guests to stay connected and up-to-date on the latest news and promotions.
+
+News and updates: A section for news and updates from the hotel, such as new amenities, renovations, and special offers.
+
+Accessibility information: Information on accessibility features for guests with disabilities, including information on accessible rooms, facilities, and services.
