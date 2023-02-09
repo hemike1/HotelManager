@@ -12,18 +12,22 @@
 
 	$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	switch($request) {
-		case '/':
+		case '/korondi/':
 			$controller = new LoginController();
 			$controller->login();
 			break;
-		case '/login':
+		case '/korondi/login':
 			$controller = new LoginController();
 			$controller->login();
 			break;
-        case '/register';
+        case '/korondi/register';
             $controller = new RegisterController();
             $controller->register();
             break;
+		case '/korondi/home';
+			$controller = new HomeController();
+			$controller->home();
+			break;
 		default:
 			http_response_code(404);
 			include('View/Users/404.php');

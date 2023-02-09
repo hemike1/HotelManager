@@ -4,7 +4,7 @@
 ?>
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../Assets/css/login.css">
+    <link rel="stylesheet" href="././Assets/css/login.css">
 </head>
 <body>
 <div class="background-image"></div>
@@ -21,7 +21,7 @@
                     <input type="email" name="email" placeholder="E-Mail" reqired><br>
                     <input type="password" name="password" placeholder="Jelszó" required><br>
                     <input type="submit" value="Regisztrálás" class="buttons">
-                    <a href="/login">Vissza</a>
+                    <a href="korondi/login">Vissza</a>
                 </form>
                 <?php
                 //print_r($_POST);

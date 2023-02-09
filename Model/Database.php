@@ -4,9 +4,9 @@ class Database {
 
 	private $conn;
 	private $connection = "localhost";
-	private $username = "HMS";
-	private $password = "I-e]R*pvkh26!R0G";
-	private $dbname = "hms";
+	private $username = "c31korondi";
+	private $password = "dxmnMX!B4M";
+	private $dbname = "c31c31korondidb";
 	private string $hashKey = "O2/6b6q*kdNzjBZQ";
 
 	public function __construct() {
@@ -22,7 +22,7 @@ class Database {
 	//To use "databaseQuery" function as to pull any request from the SQL server
 	public function dbQuery($sql) {
 		$result = $this->conn->query($sql);
-		print_r($result);
+		//print_r($result);
 		if($result->num_rows > 0){
 			return $result;
 		} else {

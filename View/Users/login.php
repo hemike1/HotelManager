@@ -9,7 +9,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-	<link rel="stylesheet" href="../../Assets/css/login.css">
+	<link rel="stylesheet" type="text/css" href="././Assets/css/login.css">
 </head>
 <body>
     <div class="background-image"></div>
@@ -25,11 +25,10 @@
                             <input type="email" name="email" placeholder="E-Mail" required><br>
                             <input type="password" name="password" placeholder="Jelszó" required><br>
                             <input type="submit" value="Belépés" class="buttons">
-                            <a href="/register">Regisztrálás</a>
-                             
+                            <a href="/korondi/register">Regisztrálás</a>
                         </form>';
                 } else {
-                    echo '<button href="/home">Folytatás</button>';
+                    echo '<button href="/korondi/home">Folytatás</button>';
                 }
 
 			    if(isset($_POST['email']) && isset($_POST['password'])) {

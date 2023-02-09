@@ -1,7 +1,7 @@
 <?php
 	echo '
 	<head>
-		<link type="text/css" rel="stylesheet" href="../../Assets/css/404.css"/> 
+		<link type="text/css" rel="stylesheet" href="././Assets/css/404.css"/> 
 		<title>Page not found</title>
 	</head>
 	<body>
@@ -13,7 +13,7 @@
 				</h1>
 			</div>
 			<p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-			<a href="/">Home Page</a>
+			<a href="/korondi/">Home Page</a>
 		</div>
 	</div>
 	</body>
