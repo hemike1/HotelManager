@@ -1,7 +1,11 @@
 .footer {
+    position: absolute;
+    padding-top: 0px;
+    margin: 0;
     left: 0;
     right: 0;
-    height: 15px;
-    top: 100vh;
+    height: 20px;
+    top: 97.7vh;
     border-top: hsl(50, 100%, 33%) 2px solid;
+    background-color: hsl(0, 100%, 20%);
 }

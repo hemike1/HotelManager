@@ -3,6 +3,7 @@
 	require_once 'Model/Database.php';
 	$db = new Database();
     $register = new User($db);
+    $prefix = "/korondi";
 
 	spl_autoload_register(function ($className) {
 		require_once 'Controller/'.$className.'.php';
@@ -20,16 +21,16 @@
 			$controller = new LoginController();
 			$controller->login();
 			break;
-        case '/korondi/register';
+        case '/korondi/register':
             $controller = new RegisterController();
             $controller->register();
             break;
-		case '/korondi/home';
+        case '/korondi/home':
 			$controller = new HomeController();
 			$controller->home();
 			break;
-		default:
-			http_response_code(404);
-			include('View/Users/404.php');
-			break;
+        default:
+            http_response_code(404);
+            include('View/Users/404.php');
+            break;
 	}

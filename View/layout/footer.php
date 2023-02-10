@@ -1,5 +1,3 @@
-<footer class="footer">
-	<div>
-        <p>All rights reserved</p>
+	<div class="footer">
+        All rights reserved
 	</div>
-</footer>

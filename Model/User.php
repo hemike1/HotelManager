@@ -31,8 +31,7 @@ require_once 'Database.php';
 
 
         public function register($firstName, $lastName, $email, $password) {
-			$stmt = $this->db->prepare('INSERT INTO '.$GLOBALS['prefix'].'registered(registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES
-			(null, ?, ?, ?, ?, 1)');
+			$stmt = $this->db->prepare('INSERT INTO '.$GLOBALS['prefix'].'registered(`registeredId`, `registeredFirstName`, `registeredLastName`, `registeredEmail`, `registeredPassword`, `registeredPermission`) VALUES (null, ?, ?, ?, ?, 1)');
 			$stmt->bind_param("ssss", $firstName, $lastName, $email, $password);
 			$firstName = $this->db->encryptData($_POST['firstname']);
 			$lastName = $this->db->encryptData($_POST['lastname']);

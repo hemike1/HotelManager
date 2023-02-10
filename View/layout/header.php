@@ -9,6 +9,6 @@
     -->
     <link rel="stylesheet" href="././Assets/css/sidebar.css">
     <link rel="stylesheet" href="././Assets/css/main.css">
-
-    <title><?php print_r($this->title);?></title>
+    <link rel="icon" type="image/png" href="././Assets/images/LogoIcon.png">
+    <title><?php print_r($title);?></title>
 </head>
