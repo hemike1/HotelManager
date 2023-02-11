@@ -4,7 +4,6 @@ require_once 'Database.php';
 		private $db;
 		function __construct($db) {
 			$this->db = new Database();
-			$asd = "+kljhsadf";
 		}
 
 		public function checkLogin($email, $password) {
@@ -27,8 +26,6 @@ require_once 'Database.php';
 				return $eredmeny;
 			}
 		}
-
-
 
         public function register($firstName, $lastName, $email, $password) {
             //check if someone's using this email

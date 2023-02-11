@@ -11,11 +11,11 @@
             <button class="sideBarButton">M</button>
             <div class="nobreak">
                 <nobr>
-                    <div class="valami"><a href="/HotelManager/login" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-house"></i>&#9;Home</a></div>
-                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-book"></i>&#9;Reservation</a></div>
-                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-location-question"></i>&#9;Services</a></div>
-                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-star"></i>&#9;Leave a review</a></div>
-                    <?php echo '<div class="valami"><a href="#" class="sidebarA" style="white-space: pre" onclick="location.href=\'?logout=1\'"><i class="fa-solid fa-right-from-bracket"></i>&#9;Kijelentkezés</a></div>';?>
+                    <div class="valami"><a href="/HotelManager/login" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-house"></i>&#9;Főoldal</a></div>
+                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-book"></i>&#9;Foglalás</a></div>
+                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-location-question"></i>&#9;Szolgáltatások</a></div>
+                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-star"></i>&#9;Értékeljen minket</a></div>
+                    <?php echo '<div class="valami"><a href="/" class="sidebarA" style="white-space: pre" onclick="location.href=\'?logout=1\'"><i class="fa-solid fa-right-from-bracket"></i>&#9;Kijelentkezés</a></div>';?>
                 </nobr>
             </div>
         </div>

@@ -11,6 +11,11 @@
 
     session_start();
 
+    if(isset($_GET['logout'])) {
+        session_unset();
+        echo 'Kilépés sikeres.';
+    }
+
 	$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	switch($request) {
 		case '/':
