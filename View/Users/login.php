@@ -9,7 +9,14 @@
     <div class="background-image"></div>
         <div class="panel">
             <div class="title">
-                <h1>Üdvözöljük!</h1>
+                <?php
+                if(isset($_SESSION['name'])){
+                    echo '<h1>Üdvözöljük, '.$_SESSION['name'].'!</h1>
+                          <p>Nem magát látja?<a></a></p>';
+                } else {
+                    echo '<h1>Üdvözöljük!</h1>';
+                }
+                ?>
             </div>
             <div class="content">
             <?php
@@ -18,15 +25,16 @@
                             <input type="email" name="email" placeholder="E-Mail" required><br>
                             <input type="password" name="password" placeholder="Jelszó" required><br>
                             <input type="submit" value="Belépés" class="buttons">
-                            <a href="/korondi/register">Regisztrálás</a>
+                            <a href="/register">Regisztrálás</a>
                         </form>';
                 } else {
-                    echo '<button href="/korondi/home">Folytatás</button>';
+
+                    echo '<a href="/home">Folytatás</a>';
                 }
 
 			    if(isset($_POST['email']) && isset($_POST['password'])) {
 			    	$login = $login->checkLogin($_POST['email'], $_POST['password']);
-                    print_r($_SESSION);
+                    //print_r($_SESSION);
                     switch($login){
                         case 0:
                             echo 'Nincs ilyen email';
@@ -36,6 +44,8 @@
                             break;
                         case 2:
                             echo 'Sikeres bejelentkezés';
+                            $home = new HomeController();
+                            $home->home();
                             break;
                     }
 			    }

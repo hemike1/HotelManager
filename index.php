@@ -13,19 +13,19 @@
 
 	$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	switch($request) {
-		case '/korondi/':
+		case '/':
 			$controller = new LoginController();
 			$controller->login();
 			break;
-		case '/korondi/login':
+		case '/login':
 			$controller = new LoginController();
 			$controller->login();
 			break;
-        case '/korondi/register':
+        case '/register':
             $controller = new RegisterController();
             $controller->register();
             break;
-        case '/korondi/home':
+        case '/home':
 			$controller = new HomeController();
 			$controller->home();
 			break;

@@ -13,7 +13,7 @@
 				</h1>
 			</div>
 			<p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
-			<a href="/korondi/">Home Page</a>
+			<a href="/">Home Page</a>
 		</div>
 	</div>
 	</body>

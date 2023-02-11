@@ -21,7 +21,7 @@
                     <input type="email" name="email" placeholder="E-Mail" reqired><br>
                     <input type="password" name="password" placeholder="Jelszó" required><br>
                     <input type="submit" value="Regisztrálás" class="buttons">
-                    <a href="korondi/login">Vissza</a>
+                    <a href="/login">Vissza</a>
                 </form>
                 <?php
                 //print_r($_POST);

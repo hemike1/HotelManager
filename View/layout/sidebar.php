@@ -15,7 +15,7 @@
                     <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-book"></i>&#9;Reservation</a></div>
                     <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-location-question"></i>&#9;Services</a></div>
                     <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-star"></i>&#9;Leave a review</a></div>
-                    <div class="valami"><a href="#" class="sidebarA" style="white-space: pre"><i class="fa-regular fa-right-to-bracket"></i>&#9;Log-In</a></div>
+                    <?php echo '<div class="valami"><a href="#" class="sidebarA" style="white-space: pre" onclick="location.href=\'?logout=1\'"><i class="fa-solid fa-right-from-bracket"></i>&#9;Kijelentkezés</a></div>';?>
                 </nobr>
             </div>
         </div>
@@ -23,7 +23,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             crossorigin="anonymous">
-
     </script>
     <script>
         const sidebar = document.querySelector('.sidebar');

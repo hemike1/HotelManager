@@ -31,13 +31,24 @@ require_once 'Database.php';
 
 
         public function register($firstName, $lastName, $email, $password) {
-			$stmt = $this->db->prepare('INSERT INTO '.$GLOBALS['prefix'].'registered(registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES
-			(null, ?, ?, ?, ?, 1)');
-			$stmt->bind_param("ssss", $firstName, $lastName, $email, $password);
-			$firstName = $this->db->encryptData($_POST['firstname']);
-			$lastName = $this->db->encryptData($_POST['lastname']);
-			$email = $this->db->encryptData($_POST['email']);
-			$password = $this->db->encryptData($_POST['password']);
-			$stmt->execute();
+            //check if someone's using this email
+            $check = $this->db->prepare('SELECT registeredEmail FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
+            if(!$check) {
+                return "Hiba: ". $this->db->error;
+            }
+            $check->bind_param("s", $email);
+            $check->execute();
+            if($check->num_rows > 0) {
+                return 1;
+            } else { // if user doesnt exist, register
+                $sql = $this->db->prepare('INSERT INTO '.$GLOBALS['prefix'].'registered(registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES (null, ?, ?, ?, ?, 1)');
+                if(!$sql) {
+                    return "Error: ". $sql->db->error; //
+                }
+                $sql->bind_param("ssss", $firstName, $lastName, $email, $password);
+                if($sql->execute()){
+                    return "Regisztráció sikeres!";
+                }
+            }
         }
     }

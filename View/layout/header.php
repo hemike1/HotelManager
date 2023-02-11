@@ -7,8 +7,8 @@
     <!--
     therse are for the font. it is mandatory on every site.
     -->
-    <link rel="stylesheet" href="././Assets/css/sidebar.css">
-    <link rel="stylesheet" href="././Assets/css/main.css">
+    <link rel="stylesheet" href="../../Assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../Assets/css/main.css">
 
     <title><?php print_r($this->title);?></title>
 </head>
