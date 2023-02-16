@@ -5,3 +5,4 @@ useful stuff.txt
 .idea/workspace.xml
 *.xml
 *.iml
+Model/Database.php

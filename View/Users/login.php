@@ -25,34 +25,14 @@
                             <input type="email" name="email" placeholder="E-Mail" required><br>
                             <input type="password" name="password" placeholder="Jelszó" required><br>
                             <input type="submit" value="Belépés" class="buttons">
-                            <a href="/register">Regisztrálás</a>
+                            <a href="/korondi/register">Regisztrálás</a>
                         </form>';
                 } else {
-
-                    echo '<a href="/home">Folytatás</a>';
+                    echo '<a href="/korondi/home">Folytatás</a>';
                 }
-
-			    if(isset($_POST['email']) && isset($_POST['password'])) {
-			    	$login = $login->checkLogin($_POST['email'], $_POST['password']);
-                    //print_r($_SESSION);
-                    switch($login){
-                        case 0:
-                            echo 'Nincs ilyen email';
-                            break;
-                        case 1:
-                            echo 'Sikertelen belépés';
-                            break;
-                        case 2:
-                            echo 'Sikeres bejelentkezés';
-                            $home = new HomeController();
-                            $home->home();
-                            break;
-                    }
-			    }
 
             ?>
             </div>
         </div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <?php require_once './layout/footer.php';?>
 </body>

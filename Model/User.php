@@ -7,45 +7,50 @@ require_once 'Database.php';
 		}
 
 		public function checkLogin($email, $password) {
-			$sql = 'SELECT registeredId, registeredFirstName, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = "'.$this->db->encryptData($email).'"';
-			if($result = $this->db->dbQuery($sql)){
-				if($row = $result->fetch_assoc()){
-					$registeredEmail = $this->db->decryptData($row['registeredEmail']);
-					$registeredPassword = $this->db->decryptData($row['registeredPassword']);
-					print_r($registeredEmail, $registeredPassword);
-					if($this->db->decryptData($row['registeredPassword']) === $password){
-						$_SESSION['name'] = $this->db->decryptData($row['registeredFirstName']);
-						$_SESSION['id'] = $row['registeredId'];
-						$eredmeny = 2;
+			$sql = $this->db->prepare('SELECT registeredId, registeredFirstName, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
+			$encEm = $this->db->encryptData($email);
+			if($sql->bind_param('s', $encEm)){
+				$sql->execute();
+				if($result = $sql->get_result()){
+					if($result->num_rows > 0){
+						$result = $result->fetch_assoc();
+						if(!password_verify($password, $result['registeredPassword'])){
+							return 1;
+						} else {
+							return 2;
+							$_SESSION['name'] = $result['registeredFirstName'];
+							$_SESSION['id'] = $result['registeredId'];
+						}
 					} else {
-						$eredmeny = 1;
+						return 0;
 					}
-				} else {
-					$eredmeny = 0;
 				}
-				return $eredmeny;
 			}
 		}
 
-        public function register($firstName, $lastName, $email, $password) {
-            //check if someone's using this email
-            $check = $this->db->prepare('SELECT registeredEmail FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
-            if(!$check) {
-                return "Hiba: ". $this->db->error;
-            }
-            $check->bind_param("s", $email);
-            $check->execute();
-            if($check->num_rows > 0) {
-                return 1;
-            } else { // if user doesnt exist, register
-                $sql = $this->db->prepare('INSERT INTO '.$GLOBALS['prefix'].'registered(registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES (null, ?, ?, ?, ?, 1)');
-                if(!$sql) {
-                    return "Error: ". $sql->db->error; //
-                }
-                $sql->bind_param("ssss", $firstName, $lastName, $email, $password);
-                if($sql->execute()){
-                    return "Regisztráció sikeres!";
-                }
-            }
-        }
+        public function register($firstName, $lastName, $email, $password): void {
+			$check = $this->db->prepare('SELECT registeredEmail FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
+			$checkem = $this->db->encryptData($email);
+			print_r($checkem);
+			if($check->bind_param('s', $checkem)){
+				$check->execute();
+				if($result = $check->get_result()){
+					if($result->num_rows > 0){
+						echo 'Ez az email már használatban van.';
+					} else {
+						$stmt = $this->db->prepare('INSERT INTO '.$GLOBALS['prefix'].'registered (registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword, registeredPermission) VALUES (null, ?, ?, ?, ?, 1)');
+						$fn = $this->db->encryptData($firstName);
+						$ln = $this->db->encryptData($lastName);
+						$em = $this->db->encryptData($email);
+						$pw = $this->db->passwordHash($password);
+						$stmt->bind_param('ssss', $fn, $ln, $em, $pw);
+						if(!$stmt->execute()){
+							trigger_error("there was an error.....".$this->db->conn->error, E_USER_WARNING);
+						} else {
+							header('Location: /korondi/login');
+						}
+					}
+				}
+			}
+		}
     }

@@ -1,11 +1,3 @@
-<?php
-    $db = new Database();
-    $register = new User($db);
-?>
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="././Assets/css/login.css">
-</head>
 <body>
 <div class="background-image"></div>
 <div>
@@ -21,19 +13,8 @@
                     <input type="email" name="email" placeholder="E-Mail" reqired><br>
                     <input type="password" name="password" placeholder="Jelszó" required><br>
                     <input type="submit" value="Regisztrálás" class="buttons">
-                    <a href="/login">Vissza</a>
+                    <a href="/korondi/login">Vissza</a>
                 </form>
-                <?php
-                //print_r($_POST);
-				if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])) {
-                    $firstName = $_POST['firstname'];
-                    $lastName = $_POST['lastname'];
-                    $email = $_POST['email'];
-                    $password = $_POST['password'];
-                    $register->register($firstName, $lastName, $email, $password);
-                }
-
-                ?>
             </div>
         </div>
     </div>

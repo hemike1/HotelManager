@@ -7,7 +7,7 @@ body {
     height: 100%;
     background-color: hsl(0, 100%, 20%);
     transition: 1s ease;
-    position: relative
+    position: fixed;
 }
 
 .sideBarMain-content {

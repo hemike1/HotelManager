@@ -2,7 +2,7 @@
 
 class Database {
 
-	private $conn;
+	public $conn;
 	private $connection = "localhost";
 	private $username = "c31korondi";
 	private $password = "dxmnMX!B4M";
@@ -33,7 +33,7 @@ class Database {
 	public function dbInsert($sql) {
 		if($this->conn->query($sql) === true) {return null;}
 		else {
-			return 'Anyád';
+			return 'Nem jó.';
 		}
 	}
 
