@@ -23,6 +23,7 @@ body {
 
 .panel {
     height: 100%;
+    transform: translateZ();
 }
 
 h1 {
