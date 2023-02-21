@@ -2,52 +2,6 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-.sidebar {
-    width: 3%;
-    height: 100%;
-    background-color: hsl(0, 100%, 20%);
-    transition: 1s ease;
-    position: fixed;
-}
-
-.sideBarMain-content {
-    width: 80%;
-    height: 100%;
-    background-color: #ccc;
-    transition: 1s ease;
-}
-
-.sideBar-main-content_large {
-    width: 90%;
-}
-
-.sidebar_small {
-    width: 15%;
-}
-
-.sideBarA {
-    text-decoration: none;
-    color: hsl(50, 100%, 43%);
-    font-size: 1.5em;
-}
-
-.sideBarButton {
-    position: absolute;
-    border: none;
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    box-shadow: 0px 1px 4px 1px rgba(0 ,0, 0, .3);
-    left: 100%;
-    top: 45%;
-    transform: translateX(-50%);
-    cursor: pointer;
-}
-
-.nobreak {
-    overflow: hidden;
-}
-.valami {
-    border-bottom: 1px solid hsl(50, 100%, 43%);
-    padding-left: .8em;
+.sidebar{
+    width: 4rem;
 }

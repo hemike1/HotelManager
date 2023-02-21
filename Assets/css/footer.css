@@ -4,8 +4,11 @@
     margin: 0;
     left: 0;
     right: 0;
+    float: right;
+    bottom: 2px;
     height: 20px;
-    top: 97.7vh;
+    top: 97vh;
+    text-align: end;
     border-top: hsl(50, 100%, 33%) 2px solid;
     background-color: hsl(0, 100%, 20%);
 }
