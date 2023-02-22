@@ -5,30 +5,32 @@
     $login = new User($db);
     $title = "Bejelentkezés";
 ?>
-    <div class="background-image"> </div>
-        <div class="panel">
-            <div class="title">
-                <?php
-                if(isset($_SESSION['name'])){
-                    echo '<h1>Üdvözöljük, '.$_SESSION['name'].'!</h1>
-                          <p>Nem magát látja?<a></a></p>';
-                } else {
-                    echo '<h1>Üdvözöljük!</h1>';
-                }
-                ?>
-            </div>
-            <div class="mb-3">
-            <?php
-                if(!isset($_SESSION["name"])) {
-                    echo '<form action="" method="POST">
-                            <input class="form-control" type="email" name="email" placeholder="E-Mail" required><br>
-                            <input class="form-control" type="password" name="password" placeholder="Jelszó" required><br>
-                            <input type="submit" value="Belépés" class="buttons">
-                            <a href="/korondi/register">Regisztrálás</a>
-                        </form>';
-                } else {
-                    echo '<a href="/korondi/home">Folytatás</a>';
-                }
-            ?>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header text-center bg-custom text-white">
+                    <h2 class="my-1">Üdvözöljük!</h2>
+                </div>
+                <div class="card-body text-center">
+                    <form method="POST">
+                        <div class="input-group mb-3">
+                            <span for="email" class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required placeholder="Email címed">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span for="password" class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                            <input type="password" class="form-control" id="password" required placeholder="Jelszó">
+                        </div>
+                        <div id="emailHelp" class="form-text mb-3">Soha ne oszd meg az adataid senkivel.</div>
+                        <button type="submit" class="btn btn-custom">Bejelentkezés</button>
+                        <div class="mt-3">
+                            Nincs még felhasználója?&nbsp;<a href="/korondi/register" type="button">Regisztráljon!</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+    </div>
+</div>

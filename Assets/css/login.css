@@ -1,94 +1,20 @@
 body {
-    font-family: 'Playfair Display', serif;
-    background: transparent;
+    background-image: url('../images/freeHotelImage.jpg');
+    backdrop-filter: blur(5px);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
 }
-
-.background-image {
-    position: fixed;
-    left: 0;
-    right: 0;
-    background: url("../images/freeHotelImage.jpg") no-repeat center;
-    -webkit-filter: blur(5px);
-    -ms-filter: blur(5px);
-    height: 100%;
-}
-
-.content {
-    transform: translateY(30%);
-    position: fixed;
-    height: 100%;
-    left: 0;
-    right: 0;
-}
-
-.panel {
-    height: 100%;
-    transform: translateZ();
-}
-
-h1 {
-    font-size: 72px;
-    font-weight: bold;
-}
-
-.title {
-    margin: 0;
-    transform: translateY(10%);
-    position: fixed;
-    height: 100%;
-    left: 0;
-    right: 0;
-    color: hsl(50, 100%, 33%);
-    text-align: center;
-    font-size: 72px;
-    text-shadow: black 3px 3px;
-}
-
-form {
-    padding: 10px 10px 10px 10px;
-    width: 500px;
-    margin: 50px auto;
-    text-align: center;
+.bg-custom {
     background-color: hsl(0, 100%, 20%);
-    border-radius: 30px;
-    border: 10px hsl(50, 100%, 33%);
 }
-
-input[type="email"], input[type="password"], input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 30px;
-    font-size: 18px;
-    text-align: center;
-    background-color: hsl(0, 100%, 20%);
-    color: hsl(50, 100%, 33%);
-}
-
-::-webkit-input-placeholder {
-    text-align: center;
-    color: hsl(50, 100%, 33%);
-}
-
-:-moz-placeholder {
-    text-align: center;
-}
-input[type="submit"], a {
-    text-decoration: none;
-    width: 100%;
-    padding: 10px;
-    background-color: hsl(20, 100%, 24%);
-    color: hsl(50, 100%, 33%);
-    border: none;
-    border-radius: 30px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all .3s ease;
-    margin-bottom: 15px;
-}
-
-input[type="submit"]:hover, a:hover {
-    transition: all 0.3s ease;
-    color: hsl(0, 100%, 20%);
-    background-color: hsl(50, 100%, 33%);
+.btn-custom {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: hsl(0, 100%, 20%);
+    --bs-btn-border-color: hsl(0, 100%, 20%);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: hsl(20, 100%, 24%);
+    --bs-btn-hover-border-color: hsl(20, 100%, 24%);
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
 }

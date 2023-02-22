@@ -1,24 +1,32 @@
-
-<div class="background-image"></div>
-<div>
-    <div class="panel">
-        <div>
-            <div class="title">
-                <h1>Regisztráljon!</h1>
-            </div>
-            <div class="content">
-                <form action="" method="POST">
-                    <input type="text" name="firstname" placeholder="Keresztnév" required><br>
-                    <input type="text" name="lastname" placeholder="Családnév" required><br>
-                    <input type="email" name="email" placeholder="E-Mail" reqired><br>
-                    <input type="password" name="password" placeholder="Jelszó" required><br>
-                    <input type="submit" value="Regisztrálás" class="buttons">
-                    <a href="/korondi/login">Vissza</a>
-                </form>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header text-center bg-custom text-white">
+                    <h2 class="my-1">Regisztrálás</h2>
+                </div>
+                <div class="card-body text-center">
+                    <form method="POST">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa-solid fa-signature"></i></span>
+                            <input type="text" aria-label="" name="firstname" class="form-control" placeholder="Vezetéknév" required>
+                            <input type="text" aria-label="" name="lastname" class="form-control" placeholder="Keresztnév" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span for="email" class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" required placeholder="Email címed">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span for="password" class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                            <input type="password" class="form-control" name="password" required placeholder="Jelszó">
+                        </div>
+                        <button type="submit" class="btn btn-custom">Regisztrálás</button>
+                        <div class="mt-3">
+                            Már van felhasználója?&nbsp;<a href="/korondi/login" type="button">Jelentkezzen be!</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>

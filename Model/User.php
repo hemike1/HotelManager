@@ -8,8 +8,8 @@ require_once 'Database.php';
 
 		public function checkLogin($email, $password) {
 			$sql = $this->db->prepare('SELECT registeredId, registeredFirstName, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
-			$encEm = $this->db->encryptData($email);
-			if($sql->bind_param('s', $encEm)){
+			$enckEm = $this->db->encryptData($email);
+			if($sql->bind_param('s', $enckEm)){
 				$sql->execute();
 				if($result = $sql->get_result()){
 					if($result->num_rows > 0){
