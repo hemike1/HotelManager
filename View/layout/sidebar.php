@@ -24,8 +24,4 @@
         </div>
     </ul>
 </div>
-<script>
-    $(document).ready(function() {
-        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-    });
-</script>
+<script src="Assets/js/tooltip.js"></script>

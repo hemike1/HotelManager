@@ -16,12 +16,12 @@
                     <form method="POST">
                         <div class="input-group mb-3">
                             <span for="email" class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required placeholder="Email címed">
+                            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" required placeholder="Email címed">
                         </div>
 
                         <div class="input-group mb-3">
                             <span for="password" class="input-group-text"><i class="fa-solid fa-lock"></i></span>
-                            <input type="password" class="form-control" id="password" required placeholder="Jelszó">
+                            <input type="password" class="form-control" name="password" required placeholder="Jelszó">
                         </div>
                         <div id="emailHelp" class="form-text mb-3">Soha ne oszd meg az adataid senkivel.</div>
                         <button type="submit" class="btn btn-custom">Bejelentkezés</button>

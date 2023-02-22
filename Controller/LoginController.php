@@ -2,8 +2,10 @@
 
 class LoginController {
 	public function login() {
+
 		$db = new Database();
 		$user = new User($db);
+
 		if(isset($_POST['email']) && isset($_POST['password'])) {
 			$login = $user->checkLogin($_POST['email'], $_POST['password']);
 			switch($login){

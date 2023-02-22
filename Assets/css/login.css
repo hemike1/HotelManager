@@ -1,4 +1,5 @@
 body {
+    font-family: 'Playfair Display', serif;
     background-image: url('../images/freeHotelImage.jpg');
     backdrop-filter: blur(5px);
     background-size: cover;
