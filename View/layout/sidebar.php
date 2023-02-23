@@ -41,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="/korondi/admin/usermgmt" class="nav-link py-3 border-bottom border- custom-border-color" title="Recepciós felvétel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Recepciós felvétel">
+            <a href="/korondi/admin/usermgmt" class="nav-link py-3 border-bottom border-5 custom-border-color" title="Recepciós felvétel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Recepciós felvétel">
                 <i class="fa-regular fa-file color-custom"></i>
             </a>
         </li>

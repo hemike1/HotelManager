@@ -35,6 +35,10 @@
 			$controller = new LoginController();
 			$controller->logout();
 			break;
+        case '/korondi/reservations':
+            $controller = new reservationConroller();
+            $controller->reservation();
+            break;
         default:
             http_response_code(404);
             include('View/Users/404.php');
