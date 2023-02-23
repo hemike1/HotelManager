@@ -25,4 +25,10 @@ class LoginController {
 		require_once 'View/Users/login.php';
         require_once 'View/layout/footer.php';
 	}
+	public function logout(){
+
+		session_destroy();
+		header('Location: /korondi/');
+
+	}
 }

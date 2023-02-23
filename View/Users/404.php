@@ -13,10 +13,10 @@
 			</div>
 			<p>A hely amit keres nem elérhető vagy lehet hogy törölték.</p>
 			<?php
-			if(isset($_SESSION['name'])) {
-                echo '<a href="/home">Vissza</a>';
+			if(isset($_SESSION['id'])) {
+                echo '<a href="/korondi/home">Vissza</a>';
             } else {
-                echo '<a href="/">Bejelentkezés</a>';
+                echo '<a href="/korondi/">Bejelentkezés</a>';
             }
 			?>
 		</div>

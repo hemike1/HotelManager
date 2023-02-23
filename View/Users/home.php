@@ -1,7 +1,7 @@
 <?php
 ?>
-<div class="container">
-    <!-- Floor map -->
+<!--<div class="container">
+     Floor map
     <section>
         <div class="row">
             <div class="col-12 col-md-8">
@@ -12,7 +12,7 @@
         </div>
     </section>
 
-    <img src="../../Assets/images/floorplan.png" #usemap="emelet" class="layout mx-auto d-block">
+    <img src="Assets/images/floorplan.png" #usemap="emelet" class="layout mx-auto d-block">
 
-</div>
+</div>-->
 

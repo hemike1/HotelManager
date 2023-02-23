@@ -18,21 +18,22 @@
 
 	$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 	switch($request) {
+		case '/korondi/login':
 		case '/korondi/':
 			$controller = new LoginController();
 			$controller->login();
 			break;
-		case '/korondi/login':
-			$controller = new LoginController();
-			$controller->login();
-			break;
-        case '/korondi/register':
+		case '/korondi/register':
             $controller = new RegisterController();
             $controller->register();
             break;
         case '/korondi/home':
 			$controller = new HomeController();
 			$controller->home();
+			break;
+		case '/korondi/logout':
+			$controller = new LoginController();
+			$controller->logout();
 			break;
         default:
             http_response_code(404);
