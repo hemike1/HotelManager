@@ -35,9 +35,13 @@ body {
 }
 
 .color-custom{
-    color: hsl(0, 100%, 20%) !important;
+    color: hsl(50, 100%, 33%) !important;
 }
 
 .bg-color-custom{
     background-color: hsl(0, 100%, 20%) !important;
+}
+
+.custom-border-color{
+    border-color: hsl(30, 100%, 26%);
 }
