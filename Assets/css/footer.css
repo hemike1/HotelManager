@@ -8,7 +8,6 @@
     float: right;
     bottom: 2px;
     height: 30px;
-    top: calc(100vh - 25px);
     text-align: center;
     border-top: hsl(50, 100%, 33%) 2px solid;
     background-color: hsl(0, 100%, 20%);

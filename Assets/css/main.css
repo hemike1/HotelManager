@@ -19,3 +19,25 @@ body {
     display: flex;
     height: 100px;
 }
+
+.bg-custom {
+    background-color: hsl(0, 100%, 20%);
+    color: #fff;
+}
+.btn-custom {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: hsl(0, 100%, 20%);
+    --bs-btn-border-color: hsl(0, 100%, 20%);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: hsl(20, 100%, 24%);
+    --bs-btn-hover-border-color: hsl(20, 100%, 24%);
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+}
+
+.color-custom{
+    color: hsl(0, 100%, 20%) !important;
+}
+
+.bg-color-custom{
+    background-color: hsl(0, 100%, 20%) !important;
+}
