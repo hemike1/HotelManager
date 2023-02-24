@@ -8,46 +8,54 @@
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
                         <a href="/korondi/home" class="nav-link align-middle px-0">
-                            <i class="fa-regular fa-house color-custom"></i> <span class="ms-1 d-none d-sm-inline">Főoldal</span>
+                            <i class="fa-regular fa-house color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Főoldal</span>
                         </a>
                     </li>
                     <li>
                         <a href="/korondi/review" class="nav-link px-0 align-middle">
-                            <i class="fa-regular fa-star color-custom"></i> <span class="ms-1">Értékeljen</span></a>
+                            <i class="fa-regular fa-star color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Értékeljen</span></a>
                     </li>
                     <li>
                         <a href="/korondi/contacts" class="nav-link px-0 align-middle">
-                            <i class="fa-regular fa-circle-phone color-custom"></i> <span class="ms-1 d-none d-sm-inline">Elérhetőségek</span> </a>
+                            <i class="fa-regular fa-circle-phone color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Elérhetőségek</span> </a>
                     </li>
                     <li>
                         <a href="/korondi/info" class="nav-link px-0 align-middle">
-                            <i class="fa-regular fa-wheelchair color-custom"></i> <span class="ms-1 d-none d-sm-inline">Akadálymentesítés</span> </a>
+                            <i class="fa-regular fa-wheelchair color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Akadálymentesítés</span> </a>
                     </li>
                     <li>
                         <a href="/korondi/images" class="nav-link px-0 align-middle pb-5">
-                            <i class="fa-regular fa-image color-custom"></i> <span class="ms-1 d-none d-sm-inline">Képeink</span> </a>
+                            <i class="fa-regular fa-image color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Képeink</span> </a>
                     </li>
-                    <?php if($user->getPermission() >= 2): ?>
-                    <li>
-                        <a href="/korondi/reservations" class="nav-link px-0 align-middle">
-                            <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline">Foglalások</span> </a>
-                    </li>
-                    <?php endif; if($user->getPermission() == 3): ?>
-                    <li>
-                        <a href="/korondi/admin/allreserv" class="nav-link px-0 align-middle">
-                            <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline">Összes foglalás</span> </a>
-                    </li>
-                    <li>
-                        <a href="/korondi/admin/usermgmt" class="nav-link px-0 align-middle">
-                            <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline">Recepciós Felvétel</span> </a>
-                    </li>
-                    <?php endif; ?>
+					<?php if($user->getPermission() >= 2): ?>
+                        <li>
+                            <a href="/korondi/reservations" class="nav-link px-0 align-middle">
+                                <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Foglalások</span> </a>
+                        </li>
+					<?php endif; if($user->getPermission() == 3): ?>
+                        <li>
+                            <a href="/korondi/admin/allreserv" class="nav-link px-0 align-middle">
+                                <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Összes foglalás</span> </a>
+                        </li>
+                        <li>
+                            <a href="/korondi/admin/usermgmt" class="nav-link px-0 align-middle">
+                                <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Recepciós Felvétel</span> </a>
+                        </li>
+					<?php endif; ?>
                 </ul>
                 <hr>
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">loser</span>
+                        <span class="d-none d-sm-inline mx-1"><?php
+                             if($user->getPermission() == 1){
+                                 echo '<i class="fa-light fa-user"></i>';
+                             } else if($user->getPermission() == 2) {
+                                 echo '<i class="fa-regular fa-book-open-cover"></i>';
+                             }
+                             else if($user->getPermission() == 3) {
+                                 echo '<i class="fa-regular fa-star"></i>';
+                             }
+                             print_r(" ".$user->getFirstName() ." ". $user->getLastName());?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                         <li><a class="dropdown-item" href="#">New project...</a></li>
