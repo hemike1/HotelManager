@@ -1,5 +1,5 @@
-</div>
-</div>
+        </div>
+    </div>
 </div>
 <footer class="mt-auto text-center bg-custom">All rights reserved</footer>
 

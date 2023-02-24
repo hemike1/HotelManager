@@ -35,10 +35,35 @@
 			$controller = new LoginController();
 			$controller->logout();
 			break;
+        case '/korondi/review':
+            $controller = new reviewConroller();
+            $controller->review();
+            break;
+        case '/korondi/contacts':
+            $controller = new contactsController();
+            $controller->contacts();
+            break;
+        case '/korondi/access':
+            $controller = new accessConroller();
+            $controller->access();
+            break;
+        case '/korondi/images':
+            $controller = new imagesConroller();
+            $controller->images();
+            break;
         case '/korondi/reservations':
             $controller = new reservationConroller();
             $controller->reservation();
             break;
+        case '/korondi/admin/allreserv':
+            $controller = new allreservConroller();
+            $controller->allReserv();
+            break;
+        case '/korondi/admin/usermgmt':
+            $controller = new usermgmtConroller();
+            $controller->userMgmt();
+            break;
+        case '/korondi/errors/noAccess':
         default:
             http_response_code(404);
             include('View/Users/404.php');

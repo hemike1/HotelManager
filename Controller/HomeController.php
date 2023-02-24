@@ -2,6 +2,7 @@
 
 class HomeController {
 	public function home(): void {
+        $title = 'Főoldal';
 		$db = new Database();
 		$user = new User($db);
 		$user->checkLoggedIn();

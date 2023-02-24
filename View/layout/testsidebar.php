@@ -20,7 +20,7 @@
                             <i class="fa-regular fa-circle-phone color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Elérhetőségek</span> </a>
                     </li>
                     <li>
-                        <a href="/korondi/info" class="nav-link px-0 align-middle">
+                        <a href="/korondi/access" class="nav-link px-0 align-middle">
                             <i class="fa-regular fa-wheelchair color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Akadálymentesítés</span> </a>
                     </li>
                     <li>
@@ -58,13 +58,12 @@
                              print_r(" ".$user->getFirstName() ." ". $user->getLastName());?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="/korondi/logout">Sign out</a></li>
                     </ul>
                 </div>
             </div>

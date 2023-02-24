@@ -1,6 +1,7 @@
 <?php
     class RegisterController {
         public function register(){
+            $title = "Regisztrálás";
 			$db = new Database();
 			$user = new User($db);
 			if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email']) && isset($_POST['password'])) {

@@ -6,6 +6,6 @@
     <link rel="stylesheet" href="././Assets/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="Assets/css/login.css">
     <link rel="icon" href="././Assets/images/LogoIcon.ico" type="image/ico">
-	<title>Bejelentkezés</title>
+	<title><?php echo $title?></title>
 </head>
 <body>

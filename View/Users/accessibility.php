@@ -1,1 +1,1 @@
-<?php
+<!--TODO: description on whether people in wheelchairs can use the resort or not-->
