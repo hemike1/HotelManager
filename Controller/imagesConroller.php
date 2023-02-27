@@ -1,6 +1,6 @@
 <?php
 
-class imagesConroller {
+class imagesConroller extends Database {
     public function images(): void {
         $title = "Képek";
         $db = new Database();

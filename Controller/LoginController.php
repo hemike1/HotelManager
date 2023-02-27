@@ -1,6 +1,6 @@
 <?php
 
-class LoginController {
+class LoginController extends Database {
 	public function login() {
         $title = "Bejelentkezés";
 		$db = new Database();

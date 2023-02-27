@@ -35,6 +35,10 @@
 			$controller = new HomeController();
 			$controller->home();
 			break;
+        case '/korondi/reservation':
+            $controller = new reservationController();
+            $controller->reservation();
+            break;
 		case '/korondi/logout':
 			$controller = new LoginController();
 			$controller->logout();

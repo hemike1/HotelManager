@@ -1,6 +1,6 @@
 <?php
 
-class reviewConroller {
+class reviewConroller extends Database {
     public function review(): void {
         $title = "Értékeljen!";
         $db = new Database();

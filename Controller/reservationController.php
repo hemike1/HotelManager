@@ -1,11 +1,10 @@
 <?php
 
-class reservationConroller extends Database {
-    public function reservation(): void {
-
+class reservationController extends Database {
+    public function reservation() {
         $title = "Foglalások";
-		$db = new Database();
-		$user = new User($db);
+        $db = new Database();
+        $user = new User($db);
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
 
