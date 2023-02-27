@@ -19,31 +19,35 @@
             </thead>
             <tbody>
                 <?php
-                    //keresztne, veznev, email, szobaszam, kezdet, veg, fizetendo, fizetve, szamla azon
-                $sql = $this->prepare('SELECT reservationStartingT, reservationEndT, registeredFirstName, registeredLastName, registeredEmail, roomFloor, roomNumber, invoicePrePaid, invoiceId FROM '.$GLOBALS['prefix'].'reservations INNER JOIN '.$GLOBALS['prefix'].'registered ON reservationRegisteredId = registeredId INNER JOIN '.$GLOBALS['prefix'].'rooms ON reservationRoomId = roomId INNER JOIN '.$GLOBALS['prefix'].'invoice ON reservationId = invoiceReservId WHERE reservationEndT >= '.date("Y-m-d").';');
-                    $sql->execute();
-                    if($result = $sql->get_result()){
-                        if($result->num_rows > 0){
-                            while($result = $sql->fetch_assoc()){
-                                print_r($result);
-                                echo '
-                                    <tr>
-                                        <td>'.$result['registeredFirstName'].'</td>
-                                        <td>'.$result['registeredLastname'].'</td>
-                                        <td>'.$result['registeredEmail'].'</td>
-                                        <td>'.$result['roomFloor'],$result['roomNumber'].'</td>
-                                        <td>'.$result['reservationStartingT'].'</td>
-                                        <td>'.$result['reservationEndT'].'</td>
-                                        <td>Calculus TBD</td>
-                                        <td>'.$result['invoicePrePaid'].'</td>
-                                        <td>'.$result['invoiceId'].'</td>
-                                    </tr>
-                                ';
-                            }
-                        } else {
-                            echo '<td colspan="10" class="text-center">A tábla üres. Még nem érkezett foglalás</td>';
+                //keresztne, veznev, email, szobaszam, kezdet, veg, fizetendo, fizetve, szamla azon
+                $sql = $this->prepare('SELECT reservationStartingT, reservationEndT, registeredFirstName, registeredLastName, registeredEmail, roomFloor, roomNumber, invoicePrePaid, invoiceId FROM '.$GLOBALS['prefix'].'reservations INNER JOIN '.$GLOBALS['prefix'].'registered ON reservationRegisteredId = registeredId INNER JOIN '.$GLOBALS['prefix'].'rooms ON reservationRoomId = roomId INNER JOIN '.$GLOBALS['prefix'].'invoice ON reservationId = invoiceReservId WHERE reservationEndT >= CURDATE();');
+                $sql->execute();
+                if($result = $sql->get_result()){
+                    if($result->num_rows > 0){
+                        while($row = $result->fetch_assoc()){
+							if($row['invoicePrePaid'] == 1){
+                                $fizetve = 'Igen';
+                            } else {
+                                $fizetve = 'Nem';
+                            };
+                            echo '
+                                <tr>
+                                    <td>'.$db->decryptData($row['registeredFirstName']).'</td>
+                                    <td>'.$db->decryptData($row['registeredLastName']).'</td>
+                                    <td>'.$db->decryptData($row['registeredEmail']).'</td>
+                                    <td>'.$row['roomFloor']."-".$row['roomNumber'].'</td>
+                                    <td>'.$row['reservationStartingT'].'</td>
+                                    <td>'.$row['reservationEndT'].'</td>
+                                    <td>Calculus TBD</td>
+                                    <td>'.$fizetve.'</td>
+                                    <td>'.$row['invoiceId'].'</td>
+                                </tr>
+                            ';
                         }
+                    } else {
+                        echo '<td colspan="10" class="text-center">A tábla üres. Még nem érkezett foglalás</td>';
                     }
+                }
                 ?>
             </tbody>
         </table>

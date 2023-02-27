@@ -42,7 +42,7 @@ class Database {
 	}
 
 	/*
-	Got this from @tokrist. (nah, he wrote it) ((nah its not his))
+	Got this from Toth Kristof, alias: @tokrist
 	*/
 	public function passwordHash(string $input):string {
 		return password_hash($input, PASSWORD_ARGON2ID, ['memory_cost' => 2048, 'time_cost' => 4, 'threads' => 3]);

@@ -2,6 +2,13 @@
 	require_once 'Model/Database.php';
     require_once 'Model/User.php';
 
+/*
+ * Source:
+ * Register controller from ChatGPT.
+ * Edited to work because the response form ChatGPT was wrong.
+ * https://chat.openai.com/chat
+ */
+
 	spl_autoload_register(function ($className) {
 		require_once 'Controller/'.$className.'.php';
 	});

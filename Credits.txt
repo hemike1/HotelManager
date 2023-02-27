@@ -1,5 +1,13 @@
+Apps:
+    IDEA: PhpStorm's current version
+    Logo editing software: Gimp
+    FTP client: FileZilla
+    Database Management: DataGrip
+
 Logo: https://www.vecteezy.com/vector-art/7957954-minimalist-and-simple-letter-h-logo-set
 Colors: https://coolors.co/660000-6b0900-7b2a00-a88c00
 Code snippets and help: Stackoverflow.com
 styling: https://getbootstrap.com/
 icons: https://fontawesome.com/search
+
+
