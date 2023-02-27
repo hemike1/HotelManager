@@ -3,12 +3,17 @@
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-color-custom text-decoration-none">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 ">
                 <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline"><img src="Assets/images/HotelLogo.png" height="45"></span>
+                    <span class="fs-5 d-none d-sm-inline"><img src="/korondi/Assets/images/HotelLogo.png" height="45"></span>
                 </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start fs-5" id="menu">
                     <li class="nav-item">
                         <a href="/korondi/home" class="nav-link align-middle px-0">
                             <i class="fa-regular fa-house color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Főoldal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/korondi/reservation" class="nav-link align-middle px-0">
+                            <i class="fa-regular fa-book-open-cover color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Szoba foglalás</span>
                         </a>
                     </li>
                     <li>
@@ -29,7 +34,7 @@
                     </li>
 					<?php if($user->getPermission() >= 2): ?>
                         <li>
-                            <a href="/korondi/reservations" class="nav-link px-0 align-middle">
+                            <a href="/korondi/bookie/reservations" class="nav-link px-0 align-middle">
                                 <i class="fa-regular fa-file color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Foglalások</span> </a>
                         </li>
 					<?php endif; if($user->getPermission() == 3): ?>

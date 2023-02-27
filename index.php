@@ -1,9 +1,6 @@
 <?php
-    require_once 'Model/User.php';
 	require_once 'Model/Database.php';
-	$db = new Database();
-    $register = new User($db);
-    $prefix = "/korondi";
+    require_once 'Model/User.php';
 
 	spl_autoload_register(function ($className) {
 		require_once 'Controller/'.$className.'.php';
@@ -51,7 +48,7 @@
             $controller = new imagesConroller();
             $controller->images();
             break;
-        case '/korondi/reservations':
+        case '/korondi/bookie/reservations':
             $controller = new reservationConroller();
             $controller->reservation();
             break;
