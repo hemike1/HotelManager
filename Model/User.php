@@ -6,6 +6,9 @@
 		private $email;
 		private $permission;
 
+		protected String $imgDir = "/korondi/Assets/images/showroom";
+		protected String $roomImgDir = "/korondi/Assets/images/rooms";
+
 
 		public function checkLogin($email, $password) {
 			$sql = $this->prepare('SELECT registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
@@ -53,7 +56,7 @@
 			}
 		}
 
-		public function getUserData($id){
+		public function getUserData($id): void{
 			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'registered WHERE registeredId = ?');
 			if($sql->bind_param('i', $_SESSION['id'])){
 				$sql->execute();
@@ -72,12 +75,11 @@
 		}
 
 		public function uploadImages($imgName, $imgType): void {
-			$targetDir = "/korondi/Assets/images/showroom";
-			$targetImage = $targetDir.$imgName.$imgType;
+			$targetImage = $this->imgDir.$imgName.$imgType;
 			if($imgType == ".png"){
 				foreach($_FILES['file']['error'] as $key => $error){
 					if($error == UPLOAD_ERR_OK){
-						move_uploaded_file($imgName, "$targetDir/$imgName");
+						move_uploaded_file($imgName, "$this->imgDir/$imgName");
 					}
 				}
 			}
@@ -87,6 +89,25 @@
 			if (!isset($_SESSION['id'])) {
 				header('Location: /korondi/');
 			}
+		}
+
+		public function getAllRoomData(): array{
+			$response = array();
+			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'rooms');
+			$sql->execute();
+			if($result = $sql->get_result()){
+				while($row = $result->fetch_assoc()){
+					$temp['roomId'] = $row['roomId'];
+					$temp['accomodation'] = $row['roomAccomodation'];
+					$temp['size'] = $row['roomSize'];
+					$temp['floor'] = $row['roomFloor'];
+					$temp['number'] = $row['roomNumber'];
+					$temp['image'] = $row['roomImageName'];
+					$temp['description'] = $row['roomDescription'];
+					$response[] = $temp;
+				}
+			}
+			return $response;
 		}
 
 		/**
@@ -115,5 +136,9 @@
 		 */
 		public function getPermission() {
 			return $this->permission;
+		}
+
+		public function getRoomImgDir(): string {
+			return $this->roomImgDir;
 		}
     }
