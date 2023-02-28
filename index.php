@@ -39,6 +39,10 @@
 			$controller = new LoginController();
 			$controller->logout();
 			break;
+		case '/korondi/reservation':
+			$controller = new reservationController();
+			$controller->reservation();
+			break;
         case '/korondi/review':
             $controller = new reviewConroller();
             $controller->review();
@@ -56,7 +60,7 @@
             $controller->images();
             break;
         case '/korondi/bookie/reservations':
-            $controller = new reservationConroller();
+            $controller = new reservationsConroller();
             $controller->reservation();
             break;
         case '/korondi/admin/allreserv':
@@ -68,8 +72,11 @@
             $controller->userMgmt();
             break;
         case '/korondi/errors/noAccess':
+			http_response_code(403);
+			include('View/errors/noAccess.php');
+			break;
         default:
             http_response_code(404);
-            include('View/Users/404.php');
+            include('View/errors/404.php');
             break;
 	}

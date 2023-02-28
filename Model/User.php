@@ -71,6 +71,18 @@
 			}
 		}
 
+		public function uploadImages($imgName, $imgType): void {
+			$targetDir = "/korondi/Assets/images/showroom";
+			$targetImage = $targetDir.$imgName.$imgType;
+			if($imgType == ".png"){
+				foreach($_FILES['file']['error'] as $key => $error){
+					if($error == UPLOAD_ERR_OK){
+						move_uploaded_file($imgName, "$targetDir/$imgName");
+					}
+				}
+			}
+		}
+
 		public function checkLoggedIn(): void {
 			if (!isset($_SESSION['id'])) {
 				header('Location: /korondi/');

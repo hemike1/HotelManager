@@ -1,5 +1,5 @@
 <head>
-    <link type="text/css" rel="stylesheet" href="././Assets/css/404.css"/>
+    <link type="text/css" rel="stylesheet" href="/korondi/Assets/css/404.css"/>
     <title>Nincs ilyen oldal</title>
 </head>
 <body>
