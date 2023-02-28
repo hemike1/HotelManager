@@ -1,6 +1,6 @@
 <?php
 
-class contactsController {
+class contactsController extends Database {
     public function contacts() {
         $title = "Elérhetőségek";
         $db = new Database();

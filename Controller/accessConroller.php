@@ -1,6 +1,6 @@
 <?php
 
-class accessConroller {
+class accessConroller extends Database {
     public function access(): void{
         $title = "Akadálymentesítés";
         $db = new Database();

@@ -1,5 +1,5 @@
 <?php
-    class RegisterController {
+    class RegisterController extends Database {
         public function register(){
             $title = "Regisztrálás";
 			$db = new Database();

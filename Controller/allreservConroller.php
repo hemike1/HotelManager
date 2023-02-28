@@ -1,6 +1,6 @@
 <?php
 
-class allreservConroller {
+class allreservConroller extends Database {
     public function allReserv(): void {
 
         $title = "Összes foglalás";

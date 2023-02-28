@@ -1,6 +1,6 @@
 <?php
 
-class HomeController {
+class HomeController extends Database {
 	public function home(): void {
         $title = 'Főoldal';
 		$db = new Database();

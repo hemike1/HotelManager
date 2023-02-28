@@ -1,6 +1,6 @@
 <?php
 
-class usermgmtConroller {
+class usermgmtConroller extends Database {
     public function userMgmt(): void {
         $title = "Felhasználó kezelés";
         $db = new Database();
