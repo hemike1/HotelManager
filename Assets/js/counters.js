@@ -5,4 +5,5 @@ desc.addEventListener('input', () => {
     } else {
         document.getElementById('newroomcount').innerHTML = "Leírás, max. 200 karakter!";
     }
+    desc.style.height = "";desc.style.height = desc.scrollHeight + "px";
 });

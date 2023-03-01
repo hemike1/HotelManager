@@ -45,3 +45,9 @@ body {
 .custom-border-color {
     border-color: hsl(30, 100%, 26%);
 }
+
+textarea {
+    resize: none;
+    height: 5vh;
+    overflow: hidden;
+}
