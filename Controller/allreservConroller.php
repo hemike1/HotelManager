@@ -12,7 +12,6 @@ class allreservConroller extends Database {
         $user->getUserData($_SESSION['id']);
 
         if ($user->getPermission() == 3) {
-            echo $user->getPermission();
             require_once 'View/layout/mainHeader.php';
             require_once 'View/layout/testsidebar.php';
             require_once 'View/admin/allreserv.php';

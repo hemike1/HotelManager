@@ -93,7 +93,7 @@
 
 		public function getAllRoomData(): array{
 			$response = array();
-			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'rooms');
+			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'rooms INNER JOIN '.$GLOBALS['prefix'].'features ON roomFeatures = featureId');
 			$sql->execute();
 			if($result = $sql->get_result()){
 				while($row = $result->fetch_assoc()){
@@ -103,6 +103,8 @@
 					$temp['floor'] = $row['roomFloor'];
 					$temp['number'] = $row['roomNumber'];
 					$temp['image'] = $row['roomImageName'];
+					$temp['features'] = $row['featureIcon'];
+					$temp['price'] = $row['roomPrice'];
 					$temp['description'] = $row['roomDescription'];
 					$response[] = $temp;
 				}

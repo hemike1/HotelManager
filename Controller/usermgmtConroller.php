@@ -10,7 +10,6 @@ class usermgmtConroller extends Database {
 
 
 		if ($user->getPermission() == 3) {
-			echo $user->getPermission();
 			require_once 'View/layout/mainHeader.php';
 			require_once 'View/layout/testsidebar.php';
 			require_once 'View/admin/usermgmt.php';
