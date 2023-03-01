@@ -12,7 +12,7 @@ class reservationsConroller extends Database {
 
 		if ($user->getPermission() >= 2) {
 			require_once 'View/layout/mainHeader.php';
-			require_once 'View/layout/testsidebar.php';
+			require_once 'View/layout/sidebar.php';
 			require_once 'View/superuser/reservations.php';
 			require_once 'View/layout/footer.php';
 		} else {

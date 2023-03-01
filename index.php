@@ -75,6 +75,10 @@
             $controller = new usermgmtConroller();
             $controller->userMgmt();
             break;
+        case '/korondi/admin/newroom':
+            $controller = new newroomController();
+            $controller->newroom();
+            break;
         case '/korondi/errors/noAccess':
 			http_response_code(403);
 			include('View/errors/noAccess.php');

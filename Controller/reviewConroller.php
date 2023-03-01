@@ -10,7 +10,7 @@ class reviewConroller extends Database {
 
 
         require_once 'View/layout/mainHeader.php';
-        require_once 'View/layout/testsidebar.php';
+        require_once 'View/layout/sidebar.php';
 
         require_once 'View/layout/footer.php';
     }
