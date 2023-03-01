@@ -11,19 +11,18 @@
                     </div>
                 </form>';
         }
-        $imgName = $_FILES['file']['name'];
-        $imgType = $_FILES['file']['type'];
-        $user->uploadImage($imgName, $imgType);
     ?>
     <div class="row row-cols-4"> <!-- images from unsplash; https://unsplash.com/s/photos/hotel-room -->
         <div class="col">Column</div>
         <?php
-		$dir = "http://banki13.komarom.net/korondi/Assets/images/showroom/";
-		$files = scandir($dir . '*.jpg');
-
-		foreach($files as $file) {
-			echo '<img src="' . $file . '" />';
-		}
+		$dir = "/korondi/Assets/images/showroom/";
+        $extensions = array('jpg','png','jpeg','gif');
+		$files = scandir($dir);
+        for ($i = 0; $i < count($files); $i++) {
+            $file = pathinfo($files[$i]);
+            $extension = $file['extension'];
+            echo '<img src="'.$dir.$files[$i].$extension.'">';
+        }
         ?>
     </div>
 </div>
