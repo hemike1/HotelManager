@@ -1,4 +1,4 @@
-const newRoomDesc = document.getElementById('newroomdescription');
+const newRoomDesc = document.getElementById('formRoomDescription');
 const previewDescription = document.getElementById('prewDesc');
 const inputIconSet = document.getElementById('iconOptions');
 const previewFeatures = document.getElementById('prewFeatures');
@@ -10,9 +10,9 @@ const previewImage = document.getElementById('prewImg');
 
 newRoomDesc.addEventListener('input', () => {
     if(newRoomDesc.value.length !== 0) {
-        document.getElementById('newroomcount').innerHTML = "200/" + (200 - newRoomDesc.value.length);
+        document.getElementById('formRoomDescription').innerHTML = "200/" + (200 - newRoomDesc.value.length);
     } else {
-        document.getElementById('newroomcount').innerHTML = "Leírás, max. 200 karakter!";
+        document.getElementById('formRoomDescription').innerHTML = "Leírás, max. 200 karakter!";
     }
     newRoomDesc.style.height = "";newRoomDesc.style.height = newRoomDesc.scrollHeight + "px";
     previewDescription.textContent = newRoomDesc.value;
@@ -30,9 +30,7 @@ newRoomNumber.addEventListener('input', () => {
     document.getElementById('prewRoomNum').innerHTML = "Emelet: "+newRoomFloor.value+" | Szobaszám: "+newRoomNumber.value;
 });
 
-inputIconSet.addEventListener("change", () => {
-    previewFeatures.textContent = inputIconSet.value;
-})
+
 
 imgInput.onchange = evt => {
     const [file] = imgInput.files;

@@ -128,6 +128,13 @@
 			return $response;
 		}
 
+        public function createNewRoom($accom, $size, $floor, $number, $imgName, $features, $price, $desc): void {
+            $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'rooms(roomId, roomAccomodation, roomSize, roomFloor, roomNumber, roomImageName, roomFeatures, roomPrice, roomDescription) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)');
+            if($sql->bind_param('isiisiis', $accom, $size, $floor, $number, $imgName, $features, $price, $desc)){
+                echo 'a';
+            }
+        }
+
 		/**
 		 * @return mixed
 		 */

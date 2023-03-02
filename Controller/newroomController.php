@@ -14,6 +14,19 @@ class newroomController extends Database {
             require_once 'View/layout/sidebar.php';
             require_once 'View/admin/newroom.php';
             require_once 'View/layout/footer.php';
+        } else {
+            header('Location: /korondi/home');
         }
+
+        $accom = $_POST['formAcc'];
+        $size = $_POST['formSize'];
+        $floor = $_POST['formRoomFloor'];
+        $number = $_POST['formRoomNum'];
+        $imgName = $_FILES['formFile']['name'];
+        $features = $_POST['formIconOptions'];
+        $desc = $_POST['formRoomDescription'];
+
+        $user->createNewRoom($accom, $size, $floor, $number, $imgName, $features, $desc);
+
     }
 }
