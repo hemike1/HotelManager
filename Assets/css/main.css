@@ -42,6 +42,10 @@ body {
     background-color: hsl(0, 100%, 20%) !important;
 }
 
+.custom-border {
+    border: black solid 3px;
+}
+
 .custom-border-color {
     border-color: hsl(30, 100%, 26%);
 }

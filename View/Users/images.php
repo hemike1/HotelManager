@@ -1,7 +1,7 @@
 <!--TODO:php script for enabling lvl 3 permission to upload images, otherwise only viewing is allowed-->
 <div class="container">
     <?php
-        if($uploadPriv == 1) {
+        if($user->getPermission() == 3) {
             echo '<form class="row g-3">
                     <div class="col-auto">
                         <input class="form-control" type="file" name="file" id="formFileMultiple" multiple>
@@ -12,17 +12,49 @@
                 </form>';
         }
     ?>
-    <div class="row row-cols-4"> <!-- images from unsplash; https://unsplash.com/s/photos/hotel-room -->
-        <div class="col">Column</div>
+    <div class="carousel slide w-75 rounded-2" id="imageCarousel" data-ride="carousel"> <!-- images from unsplash; https://unsplash.com/s/photos/hotel-room -->
+
+        <div class="carousel-indicators">
         <?php
-		$dir = "/korondi/Assets/images/showroom/";
-        $extensions = array('jpg','png','jpeg','gif');
-		$files = scandir($dir);
-        for ($i = 0; $i < count($files); $i++) {
-            $file = pathinfo($files[$i]);
-            $extension = $file['extension'];
-            echo '<img src="'.$dir.$files[$i].$extension.'">';
-        }
+		    $dir = "/var/www/clients/client31/web184/web/korondi/Assets/images/showroom/";
+            $extensions = array('jpg','png','jpeg','gif');
+		    $files = scandir($dir);
+		    for ($i = 2; $i < count($files); $i++) {
+                if($i == 2) {
+					echo '<button type="button" data-target="imageCarousel" class="active" aria-current="true" data-slide-to="' . $i . '"></button>';
+				} else {
+					echo '<button type="button" data-target="imageCarousel" data-slide-to="' . $i . '"></button>';
+				}
+            }
         ?>
+        </div>
+        <div class="carousel-inner">
+        <?php
+            for ($i = 0; $i < count($files); $i++) {
+                if($files[$i] != '.' && $files[$i] != '..')
+                    if($i == 2) {
+						echo '<div class="carousel-item active"><img class="d-block w-100" src="/korondi/Assets/images/showroom/' . $files[$i] . '"></div>';
+					} else {
+						echo '<div class="carousel-item"><img class="d-block w-100" src="/korondi/Assets/images/showroom/' . $files[$i] . '"></div>';
+					}
+            }
+        ?>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="imageCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="imageCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </div>
+<script>
+    const myCarouselElement = document.querySelector('imageCarousel')
+
+    const carousel = new bootstrap.Carousel(myCarouselElement, {
+        interval: 2000,
+        touch: false
+    })
+</script>

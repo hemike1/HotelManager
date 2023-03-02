@@ -5,6 +5,8 @@ const previewFeatures = document.getElementById('prewFeatures');
 const newRoomPrice = document.getElementById('newRoomPrice');
 const newRoomFloor = document.getElementById('formRoomFloor');
 const newRoomNumber = document.getElementById('formRoomNum');
+const imgInput = document.getElementById('formFile');
+const previewImage = document.getElementById('prewImg');
 
 newRoomDesc.addEventListener('input', () => {
     if(newRoomDesc.value.length !== 0) {
@@ -31,3 +33,10 @@ newRoomNumber.addEventListener('input', () => {
 inputIconSet.addEventListener("change", () => {
     previewFeatures.textContent = inputIconSet.value;
 })
+
+imgInput.onchange = evt => {
+    const [file] = imgInput.files;
+    if(file){
+        previewImage.src = URL.createObjectURL(file);
+    }
+}
