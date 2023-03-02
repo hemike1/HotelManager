@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-9">
+    <div class="col-8">
 
         <!-- Done stuff -->
         <div class="input-group mb-3">
@@ -53,19 +53,21 @@
             <label id="newroomcount" for="description">Leírás, max 200 karakter!</label>
         </div>
     </div>
-    <div class="col-3">
-        <div class="row">
-            <div class="card">
-                <img src="#" alt="Preview Image" id="prewImg" class="card-img-top img-thumbnail">
-                <div class="card-body">
-                    <p class="card-text" id="prewDesc">Ez egy alapértelmezett leírás a szobáról. Valahogy így fog
-                        kinézni.</p>
-                </div>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item fs-3" id="prewFeatures"></li>
-                    <li class="list-group-item fs-5" id="prewPrice">.-HUF/<i class="fa-regular fa-moon-stars"></i></li>
-                    <li class="list-group-item fs-5" id="prewRoomNum"></li>
-                </ul>
+    <div class="col-4">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                    <div class="card">
+                        <img src="/korondi/Assets/images/defaultImage.png" alt="Preview Image" id="prewImg" class="card-img-top img-thumbnail">
+                        <div class="card-body">
+                            <p class="card-text" id="prewDesc">Ez egy alapértelmezett leírás a szobáról. Valahogy így fog
+                                kinézni.</p>
+                        </div>
+                        <ul class="list-group list-group-flush text-center">
+                            <li class="list-group-item fs-3" id="prewFeatures"></li>
+                            <li class="list-group-item fs-5" id="prewPrice">.-HUF/<i class="fa-regular fa-moon-stars"></i></li>
+                            <li class="list-group-item fs-5" id="prewRoomNum"></li>
+                        </ul>
+                    </div>
             </div>
         </div>
     </div>

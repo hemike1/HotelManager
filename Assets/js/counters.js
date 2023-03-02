@@ -37,6 +37,7 @@ inputIconSet.addEventListener("change", () => {
 imgInput.onchange = evt => {
     const [file] = imgInput.files;
     if(file){
+        previewImage.src.replace("/korondi/Assets/images/defaultImage.png", "#");
         previewImage.src = URL.createObjectURL(file);
     }
 }
