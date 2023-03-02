@@ -12,25 +12,26 @@
                 </form>';
         }
     ?>
-    <div class="carousel slide w-75 rounded-2" id="imageCarousel" data-ride="carousel"> <!-- images from unsplash; https://unsplash.com/s/photos/hotel-room -->
-
-        <div class="carousel-indicators">
+    <div class="carousel slide w-75 rounded-2" id="imageCarousel" data-bs-ride="carousel"> <!-- images from unsplash; https://unsplash.com/s/photos/hotel-room -->
         <?php
-		    $dir = "/var/www/clients/client31/web184/web/korondi/Assets/images/showroom/";
-            $extensions = array('jpg','png','jpeg','gif');
-		    $files = scandir($dir);
-		    for ($i = 2; $i < count($files); $i++) {
-                if($i == 2) {
+        $dir = "/var/www/clients/client31/web184/web/korondi/Assets/images/showroom/";
+	    $extensions = array('jpg','png','jpeg','gif');
+	    $files = scandir($dir);
+        ?>
+        <div class="carousel-indicators"><!-- indicators -->
+			<?php
+			for ($i = 0; $i < count($files)-2; $i++) {
+				if($i == 2) {
 					echo '<button type="button" data-target="imageCarousel" class="active" aria-current="true" data-slide-to="' . $i . '"></button>';
 				} else {
 					echo '<button type="button" data-target="imageCarousel" data-slide-to="' . $i . '"></button>';
 				}
-            }
-        ?>
+			}
+			?>
         </div>
-        <div class="carousel-inner">
+        <div class="carousel-inner"><!-- carousel items -->
         <?php
-            for ($i = 0; $i < count($files); $i++) {
+            for ($i = 0; $i < count($files)-2; $i++) {
                 if($files[$i] != '.' && $files[$i] != '..')
                     if($i == 2) {
 						echo '<div class="carousel-item active"><img class="d-block w-100" src="/korondi/Assets/images/showroom/' . $files[$i] . '"></div>';
@@ -55,6 +56,6 @@
 
     const carousel = new bootstrap.Carousel(myCarouselElement, {
         interval: 2000,
-        touch: false
+        touch: true
     })
 </script>

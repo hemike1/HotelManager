@@ -50,6 +50,10 @@
                             <a href="/korondi/admin/newroom" class="nav-link px-0 align-middle">
                                 <i class="fa-regular fa-plus color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Új szoba rögzítése</span> </a>
                         </li>
+                        <li>
+                            <a href="/korondi/admin/allregs" class="nav-link px-0 align-middle">
+                                <i class="fa-regular fa-plus color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Minden regisztrált</span> </a>
+                        </li>
 					<?php endif; ?>
                 </ul>
                 <hr>

@@ -112,6 +112,22 @@
 			return $response;
 		}
 
+		public function getAllUser(): array {
+			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'registered');
+			$sql->execute();
+			if($result = $sql->get_result()){
+				while($row = $result->fetch_assoc()){
+					$temp['id'] = $row['registeredId'];
+					$temp['fn'] = $this->decryptData($row['registeredFirstName']);
+					$temp['ln'] = $this->decryptData($row['registeredLastName']);
+					$temp['email'] = $this->decryptData($row['registeredEmail']);
+					$temp['perm'] = $row['registeredPermission'];
+					$response[] = $temp;
+				}
+			}
+			return $response;
+		}
+
 		/**
 		 * @return mixed
 		 */

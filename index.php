@@ -79,6 +79,10 @@
             $controller = new newroomController();
             $controller->newroom();
             break;
+		case '/korondi/admin/allregs':
+			$controller = new allregisteredController();
+			$controller->allRegistered();
+			break;
         case '/korondi/errors/noAccess':
 			http_response_code(403);
 			include('View/errors/noAccess.php');
