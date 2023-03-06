@@ -10,12 +10,14 @@ const previewImage = document.getElementById('prewImg');
 
 newRoomDesc.addEventListener('input', () => {
     if(newRoomDesc.value.length !== 0) {
-        document.getElementById('formRoomDescription').innerHTML = "200/" + (200 - newRoomDesc.value.length);
+        document.getElementById('formRoomDescriptionLabel').innerHTML = "200/" + (200 - newRoomDesc.value.length);
+        previewDescription.textContent = newRoomDesc.value;
     } else {
-        document.getElementById('formRoomDescription').innerHTML = "Leírás, max. 200 karakter!";
+        document.getElementById('formRoomDescriptionLabel').innerHTML = "Leírás, max. 200 karakter!";
+        previewDescription.innerHTML = "Ez egy alapértelmezett leírás a szobáról. Valahogy így fog kinézni.";
     }
     newRoomDesc.style.height = "";newRoomDesc.style.height = newRoomDesc.scrollHeight + "px";
-    previewDescription.textContent = newRoomDesc.value;
+
 });
 
 newRoomPrice.addEventListener('input', () => {

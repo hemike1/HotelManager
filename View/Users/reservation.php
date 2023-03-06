@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row gx-2">
 	<?php
 	    foreach($rooms as $roomInfo) {
 			echo '  
-  			<div class="col-3">
-	        	<div class="card">
+  			<div class="col-12 col-md-6 col-lg-3">
+	        	<div class="card mb-2">
 	        	    <img src="' . $room->getRoomImgDir() . '/' . $roomInfo['image'] . '" class="card-img-top img-thumbnail">
 	        	    <div class="card-body">
 	        	        <p class="card-text">' . $roomInfo['description'] . '</p>

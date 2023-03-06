@@ -4,7 +4,7 @@
             <!-- Done stuff -->
             <div class="input-group mb-3">
                 <label for="formSize" class="input-group-text m-0">Szoba méret</label>
-                <select id="formSize" name="formSize" class="form-select me-1">
+                <select id="formSize" name="formSize" class="form-select me-1" required>
                     <option value="" selected disabled>Válassz...</option>
                     <option value="Small">Kicsi</option>
                     <option value="Medium">Közepes</option>
@@ -13,11 +13,11 @@
             </div>
             <div class="input-group mb-3">
                 <span for="formRoomFloor" class="input-group-text">Emelet</span>
-                <input required type="number" id="formRoomFloor" name="formRoomFloor" class="form-control col-3" placeholder="Csak számok!">
+                <input required type="number" id="formRoomFloor" name="formRoomFloor" class="form-control col-3" max="20" placeholder="Csak számok!">
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">Szoba szám</span>
-                <input required type="number" id="formRoomNum" name="formRoomNum" class="form-control ms-1 col-3" placeholder="Csak számok!">
+                <input required type="number" id="formRoomNum" name="formRoomNum" class="form-control ms-1 col-3" max="30" placeholder="Csak számok!">
             </div>
             <div class="input-group mb-3 col-6">
                 <span for="formFile" class="input-group-text">Bemutató kép a szobáról</span>
@@ -26,11 +26,11 @@
             </div>
             <div class="input-group mb-3 col-6">
                 <span class="input-group-text">Fő/szoba</span>
-                <input required type="number" class="form-control ms-1 col-3" id="formAcc" name="formAcc" placeholder="Csak számok!">
+                <input required type="number" class="form-control ms-1 col-3" id="formAcc" name="formAcc" max="10" placeholder="Csak számok!">
             </div>
             <div class="input-group mb-3">
                 <label class="input-group-text m-0" for="inputGroupSelect01">Jellemzők</label>
-                <select class="form-select me-1" id="formIconOptions" name="formIconOptions" onchange="getIcons()">
+                <select class="form-select me-1" id="formIconOptions" name="formIconOptions" onchange="getIcons()" required>
                     <option selected disabled>Válassz...</option>
 	    			<?php
 	    			$sql = $this->prepare('SELECT * FROM ' . $GLOBALS['prefix'] . 'features');
@@ -47,7 +47,7 @@
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">HUF.-/<i class="fa-regular fa-moon-stars"></i></span>
-                <input required type="number" class="form-control" id="formRoomPrice" name="formRoomPrice" placeholder="Csak számok!">
+                <input required type="number" class="form-control" id="formRoomPrice" name="formRoomPrice"max="999999" placeholder="Csak számok!">
             </div>
             <div class="form-floating">
                 <textarea required class="form-control" aria-label="With textarea" name="formRoomDescription" id="formRoomDescription" maxlength="200"

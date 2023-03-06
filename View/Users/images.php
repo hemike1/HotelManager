@@ -20,7 +20,7 @@
 	    $files = scandir($tmpDir);
         foreach($files as $image){
             if($image != "." && $image != "..")
-                echo '<div class="col"><img class="rounded border-1 custom-border-color m-1" width="500" src="'.$imgDir.$image.'"></div>';
+                echo '<div class="col-12 col-md-6 col-lg-3"><img class="rounded border-1 custom-border-color m-1 img-fluid" src="'.$imgDir.$image.'"></div>';
         }
 		?>
     </div>
