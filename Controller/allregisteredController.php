@@ -9,15 +9,12 @@ class allregisteredController {
 		$user->checkLoggedIn();
 		$user->getUserData($_SESSION['id']);
 		$getuser = $user->getAllUser();
+		$user->checkAdmin();
 
+		require_once 'View/layout/mainHeader.php';
+		require_once 'View/layout/sidebar.php';
+		require_once 'View/admin/registeredUsers.php';
+		require_once 'View/layout/footer.php';
 
-		if ($user->getPermission() == 3) {
-			require_once 'View/layout/mainHeader.php';
-			require_once 'View/layout/sidebar.php';
-			require_once 'View/admin/registeredUsers.php';
-			require_once 'View/layout/footer.php';
-		} else {
-			header('Location: /korondi/errors/noAccess');
-		}
 	}
 }

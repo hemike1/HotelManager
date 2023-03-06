@@ -6,8 +6,7 @@
 		private $email;
 		private $permission;
 
-		protected String $imgDir = "/korondi/Assets/images/showroom";
-		protected String $roomImgDir = "/korondi/Assets/images/rooms";
+
 
 
 		public function checkLogin($email, $password) {
@@ -91,27 +90,6 @@
 			}
 		}
 
-		public function getAllRoomData(): array{
-			$response = array();
-			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'rooms INNER JOIN '.$GLOBALS['prefix'].'features ON roomFeatures = featureId');
-			$sql->execute();
-			if($result = $sql->get_result()){
-				while($row = $result->fetch_assoc()){
-					$temp['roomId'] = $row['roomId'];
-					$temp['accomodation'] = $row['roomAccomodation'];
-					$temp['size'] = $row['roomSize'];
-					$temp['floor'] = $row['roomFloor'];
-					$temp['number'] = $row['roomNumber'];
-					$temp['image'] = $row['roomImageName'];
-					$temp['features'] = $row['featureIcon'];
-					$temp['price'] = $row['roomPrice'];
-					$temp['description'] = $row['roomDescription'];
-					$response[] = $temp;
-				}
-			}
-			return $response;
-		}
-
 		public function getAllUser(): array {
 			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'registered');
 			$sql->execute();
@@ -128,12 +106,21 @@
 			return $response;
 		}
 
-        public function createNewRoom($accom, $size, $floor, $number, $imgName, $features, $price, $desc): void {
-            $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'rooms(roomId, roomAccomodation, roomSize, roomFloor, roomNumber, roomImageName, roomFeatures, roomPrice, roomDescription) VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)');
-            if($sql->bind_param('isiisiis', $accom, $size, $floor, $number, $imgName, $features, $price, $desc)){
-                echo 'a';
-            }
-        }
+		public function checkSuperUser(): void {
+			if($this->permission >= 2){
+				http_response_code(403);
+				require_once 'View/errors/403.php';
+				exit;
+			}
+		}
+
+		public function checkAdmin(): void {
+			if($this->permission !== 3){
+				http_response_code(403);
+				require_once 'View/errors/403.php';
+				exit;
+			}
+		}
 
 		/**
 		 * @return mixed
@@ -163,7 +150,4 @@
 			return $this->permission;
 		}
 
-		public function getRoomImgDir(): string {
-			return $this->roomImgDir;
-		}
     }

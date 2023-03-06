@@ -1,6 +1,7 @@
 <?php
 	require_once 'Model/Database.php';
     require_once 'Model/User.php';
+	require_once 'Model/Room.php';
 
 /*
  * Source:
@@ -85,7 +86,7 @@
 			break;
         case '/korondi/errors/noAccess':
 			http_response_code(403);
-			include('View/errors/noAccess.php');
+			include('View/errors/403.php');
 			break;
         default:
             http_response_code(404);

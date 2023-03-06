@@ -17,7 +17,7 @@ class allreservConroller extends Database {
             require_once 'View/admin/allreserv.php';
             require_once 'View/layout/footer.php';
         } else {
-            require_once 'View/errors/noAccess.php';
+            require_once 'View/errors/403.php';
         }
     }
 }

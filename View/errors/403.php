@@ -1,5 +1,5 @@
 <head>
-    <link type="text/css" rel="stylesheet" href="http://banki13.komarom.net/korondi/Assets/css/404.css"/>
+    <link type="text/css" rel="stylesheet" href="/korondi/Assets/css/404.css"/>
     <title>Kérés elutasítva</title>
 </head>
 <body>

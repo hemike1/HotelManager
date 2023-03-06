@@ -8,15 +8,12 @@ class reservationsConroller extends Database {
 		$user = new User($db);
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
+		$user->checkSuperUser();
 
+		require_once 'View/layout/mainHeader.php';
+		require_once 'View/layout/sidebar.php';
+		require_once 'View/superuser/reservations.php';
+		require_once 'View/layout/footer.php';
 
-		if ($user->getPermission() >= 2) {
-			require_once 'View/layout/mainHeader.php';
-			require_once 'View/layout/sidebar.php';
-			require_once 'View/superuser/reservations.php';
-			require_once 'View/layout/footer.php';
-		} else {
-			header('Location: /korondi/errors/noAccess');
-		}
     }
 }

@@ -5,9 +5,10 @@ class reservationController extends Database {
 		$title = "Szobafoglalás";
 		$db = new Database();
 		$user = new User($db);
+		$room = new Room();
 		$user->checkLoggedIn();
 		$user->getUserData($_SESSION['id']);
-		$rooms = $user->getAllRoomData();
+		$rooms = $room->getAllRoomData();
 
 
 		require_once 'View/layout/mainHeader.php';
