@@ -27,12 +27,9 @@ class Room extends Database {
 	}
 
 	public function createNewRoom($accom, $size, $floor, $number, $imgName, $features, $price, $desc): void {
-		echo "valami";
 		$sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'rooms(roomAccomodation, roomSize, roomFloor, roomNumber, roomImageName, roomFeatures, roomPrice, roomDescription) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 		if($sql->bind_param('isiisiis', $accom, $size, $floor, $number, $imgName, $features, $price, $desc)){
 			$sql->execute();
-		} else {
-			echo "Kurva anyád";
 		}
 	}
 

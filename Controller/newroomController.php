@@ -24,7 +24,6 @@ class newroomController extends Database {
 			$desc = $_POST['formRoomDescription'];
 			$room->createNewRoom($accom, $size, $floor, $number, $imgName, $features, $price, $desc);
 			$room->moveUploadedFile($imageID);
-			echo $_FILES["$imageID"]["name"];
 		}
 
         require_once 'View/layout/mainHeader.php';
