@@ -107,6 +107,51 @@
 			return $response;
 		}
 
+		public function getSavedLocations($id){
+			$response = array();
+			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationRegisteredId = ?');
+			if($sql->bind_param('i', $id)) {
+				$sql->execute();
+				if($result = $sql->get_result()){
+					if($result->num_rows > 0){
+						$row = $result->fetch_assoc();
+						$sql2 = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'cities WHERE cityId = ?');
+						$sql2->bind_param('i', $row['savedLocationCityId']);
+						$sql2->execute();
+						if($result2 = $sql2->get_result()){
+
+							$row2 = $result2->fetch_assoc();
+
+							$temp['id'] = $row['savedLocationId'];
+							$temp['postNum'] = $row2['cityPostNum'];
+							$temp['cityName'] = $row2['cityName'];
+							$temp['streetName'] = $row['savedLocationStrName'];
+							$temp['houseNum'] = $row['savedLocationHouseNum'];
+							$response[] = $temp;
+						} else {
+							return $vaneCity = true;
+						}
+					}
+				}
+			}
+			return $response;
+		}
+
+		public function getAllCities(): array{
+			$response = array();
+			$sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'cities');
+			$sql->execute();
+			if($result = $sql->get_result()){
+				if($result->num_rows>0){
+					$row = $result->fetch_assoc();
+					$temp['postNum'] = $row['cityPostNum'];
+					$temp['cityName'] = $row['cityName'];
+					$response[] = $temp;
+				}
+			}
+		return $response;
+		}
+
 		public function checkSuperUser(): void {
 			if($this->permission >= 2){
 				http_response_code(403);

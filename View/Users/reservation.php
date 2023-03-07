@@ -28,6 +28,7 @@
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4">
@@ -44,20 +45,38 @@
                                 <li class="list-group-item fs-5" id="reservPrewSize"></li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="col-8 g-2"  onload="inputFiller()">
+                        <input type="text" id="reservRoomId" hidden readonly>
+                        <select class="form-select" id="cities" onchange="inputFiller()" required>
+                            <option selected disabled>Elmentett számlázási adatok</option>
+                            <?php
+                                if(!empty($locations)){
+                                    foreach($locations as $location){
+                                        echo '<option value="'.$location['id'].'">'.$location['postNum'].' '.$location['cityName'].', '.$location['streetName'].' '.$location['houseNum'].'</option>';
 
+                                    }
+                                } else {
+                                    echo '<option value="">Új számlázási adatok</option>';
+                                    
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Bezárás</button>
-                <button type="button" class="btn bg-color-custom color-custom">Foglalás</button>
+                <button type="submit" class="btn bg-color-custom color-custom">Foglalás</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
 <script>
+    var cities = document.getElementById('cities');
     function reservRoom(roomId){
         $.ajax({
             url: '/korondi/Assets/php/reservRoom.php',
@@ -72,8 +91,11 @@
                 document.getElementById('reservPrewNumbers').innerHTML = "Emelet: "+data["floor"]+" | Szobaszám: "+data["number"];
                 document.getElementById('reservPrewAccom').innerHTML = "Kapacitás: "+data["accomodation"]+" Fő";
                 document.getElementById('reservPrewSize').innerHTML = "Szoba méret: "+data["size"];
-                console.log(response);
+                document.getElementById('reservRoomId').innerHTML = data["roomId"];
             }
         });
+    }
+    function inputFiller(){
+        console.log('éoljkashdfé')
     }
 </script>

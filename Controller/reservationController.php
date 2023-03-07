@@ -10,6 +10,8 @@ class reservationController extends Database {
 		$user->getUserData($_SESSION['id']);
 		$rooms = $room->getAllRoomData();
 
+		$locations = $user->getSavedLocations($_SESSION['id']);
+		$cities = $user->getAllCities();
 
 		require_once 'View/layout/mainHeader.php';
 		require_once 'View/layout/sidebar.php';
