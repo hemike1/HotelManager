@@ -1,4 +1,4 @@
-<div class="row gx-2">
+**<div class="row gx-2">
 	<?php
 	    foreach($rooms as $roomInfo) {
 			echo '  
@@ -46,22 +46,63 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-8 g-2"  onload="inputFiller()">
+                    <div class="col-8 g-2">
                         <input type="text" id="reservRoomId" hidden readonly>
-                        <select class="form-select" id="cities" onchange="inputFiller()" required>
+                        <select class="form-select mb-3" id="cities" onchange="inputFiller()" required>
                             <option selected disabled>Elmentett számlázási adatok</option>
                             <?php
+                            $writeable = false;
                                 if(!empty($locations)){
                                     foreach($locations as $location){
                                         echo '<option value="'.$location['id'].'">'.$location['postNum'].' '.$location['cityName'].', '.$location['streetName'].' '.$location['houseNum'].'</option>';
-
+                                        $writeable = false;
                                     }
                                 } else {
                                     echo '<option value="">Új számlázási adatok</option>';
-                                    
+                                    $writeable = true;
                                 }
                             ?>
                         </select>
+                        <?php
+                        if($writeable){
+                            echo '
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group col-6">
+                                        <span class="input-group-text"><i class="fa-regular fa-apartment"></i></span>
+                                        <input type="text" class="form-control" id="storey" placeholder="Irányítószám">
+                                        <span class="input-group-text ms-2"><i class="fa-regular fa-tag"></i></span>
+                                        <input type="text" class="form-control" id="storey" placeholder="Város neve">
+                                    </div>
+                                    <div class="input-group col-6">
+                                        <span class="input-group-text"><i class="fa-regular fa-road"></i></span>
+                                        <input type="text" class="form-control" id="storey" placeholder="Utca neve">
+                                        <span class="input-group-text"><i class="fa-regular fa-input-numeric"></i></span>
+                                        <input type="text" class="form-control" id="storey" placeholder="Házszám">
+                                    </div>
+                                </div>
+                            </div>
+                            ';
+                        } else {
+                            echo '
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group col-6">
+                                        <span class="input-group-text"><i class="fa-regular fa-apartment"></i></span>
+                                        <input type="text" class="form-control" id="storey" placeholder="Irányítószám" readonly disabled>
+                                        <span class="input-group-text ms-2"><i class="fa-regular fa-tag"></i></span>
+                                        <input type="text" class="form-control" id="roomNumber" placeholder="Város neve" readonly disabled>
+                                    </div>
+                                    <div class="input-group col-6">
+                                        <span class="input-group-text"><i class="fa-regular fa-road"></i></span>
+                                        <input type="text" class="form-control" id="strName" placeholder="Utca neve" readonly disabled>
+                                        <span class="input-group-text ms-2"><i class="fa-regular fa-input-numeric"></i></span>
+                                        <input type="text" class="form-control" id="houseNum" placeholder="Házszám" readonly disabled>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
