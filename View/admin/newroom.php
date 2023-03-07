@@ -6,9 +6,9 @@
                 <label for="formSize" class="input-group-text m-0">Szoba méret</label>
                 <select id="formSize" name="formSize" class="form-select me-1" required>
                     <option value="" selected disabled>Válassz...</option>
-                    <option value="Small">Kicsi</option>
-                    <option value="Medium">Közepes</option>
-                    <option value="Large">Nagy</option>
+                    <option value="Kicsi">Kicsi</option>
+                    <option value="Közepes">Közepes</option>
+                    <option value="Nagy">Nagy</option>
                 </select>
             </div>
             <div class="input-group mb-3">

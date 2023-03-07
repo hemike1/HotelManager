@@ -86,6 +86,7 @@
 
 		public function checkLoggedIn(): void {
 			if (!isset($_SESSION['id'])) {
+				http_response_code(403);
 				header('Location: /korondi/');
 			}
 		}
