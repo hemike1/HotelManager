@@ -9,8 +9,8 @@
 
 
 
-		public function checkLogin($email, $password) {
-			$sql = $this->prepare('SELECT registeredId, registeredFirstName, registeredLastName, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
+		public function checkLogin($email, $password): array {
+			$sql = $this->prepare('SELECT registeredId, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
 			$enckEm = $this->encryptData($email);
 			if($sql->bind_param('s', $enckEm)){
 				$sql->execute();
@@ -18,16 +18,15 @@
 					if($result->num_rows > 0){
 						$result = $result->fetch_assoc();
 						if(!password_verify($password, $result['registeredPassword'])){
-							return 1;
+							return array("error_password" => "Hibás jelszó!"); //hibás jelszó
 						} else {
 							$_SESSION['id'] = $result['registeredId'];
-							return 2;
+							return array();
 						}
-					} else {
-						return 0;
 					}
 				}
 			}
+            return array("error_email" => "Hibás email!", "error_password" => "Hibás jelszó!");
 		}
 
         public function register($firstName, $lastName, $email, $password): void {
@@ -46,7 +45,8 @@
 						$pw = $this->passwordHash($password);
 						$stmt->bind_param('ssss', $fn, $ln, $em, $pw);
 						if(!$stmt->execute()){
-							trigger_error("there was an error.....".$this->conn->error, E_USER_WARNING);
+							//trigger_error("there was an error.....".$this->conn->error, E_USER_WARNING);
+
 						} else {
 							header('Location: /korondi/login');
 						}

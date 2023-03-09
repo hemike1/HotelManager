@@ -17,6 +17,7 @@
                         <div class="input-group mb-3">
                             <span for="email" class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" class="form-control" name="email" aria-describedby="emailHelp" required placeholder="Email címed">
+                            <span class="error invalid-feedback"><?php ?></span>
                         </div>
 
                         <div class="input-group mb-3">
@@ -34,3 +35,18 @@
         </div>
     </div>
 </div>
+<?php
+ if(!empty($response)){ //got this snippet from tokrist, with thge help of sweetalert2. ?>
+    <script>
+        setTimeout(function (){
+            Swal.fire({
+                icon: 'error',
+                title: 'Hibás adatok!',
+                text: "<?php echo $error_email.'  '.$error_password ?>",
+                showConfirmButtin: false,
+                timer: 5000,
+                timerProgressBar: true
+            })
+        }, 100);
+    </script>
+<?php } ?>
