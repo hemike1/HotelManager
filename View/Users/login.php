@@ -36,14 +36,16 @@
     </div>
 </div>
 <?php
- if(!empty($response)){ //got this snippet from tokrist, with thge help of sweetalert2. ?>
+//print_r($error_password);
+ if(!empty($error_password) || !empty($error_email)){ //got this snippet from tokrist, with thge help of sweetalert2. ?>
     <script>
         setTimeout(function (){
+            console.log("lksdjafhglksjhdgf");
             Swal.fire({
                 icon: 'error',
                 title: 'Hibás adatok!',
-                text: "<?php echo $error_email.'  '.$error_password ?>",
-                showConfirmButtin: false,
+                text: "<?php if(!empty($error_email)) echo $error_email; if(!empty($error_password)) echo $error_password; ?>",
+                showConfirmButton: false,
                 timer: 5000,
                 timerProgressBar: true
             })

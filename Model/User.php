@@ -25,8 +25,9 @@
 						}
 					}
 				}
+                return array("error_email" => "Hibás email!");
 			}
-            return array("error_email" => "Hibás email!", "error_password" => "Hibás jelszó!");
+            //return array("error_email" => "Hibás email!", "error_password" => "Hibás jelszó!");
 		}
 
         public function register($firstName, $lastName, $email, $password): void {
