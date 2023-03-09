@@ -144,10 +144,12 @@
 			$sql->execute();
 			if($result = $sql->get_result()){
 				if($result->num_rows>0){
-					$row = $result->fetch_assoc();
-					$temp['postNum'] = $row['cityPostNum'];
-					$temp['cityName'] = $row['cityName'];
-					$response[] = $temp;
+					while($row = $result->fetch_assoc()) {
+                        $temp['id'] = $row['cityId'];
+                        $temp['postNum'] = $row['cityPostNum'];
+                        $temp['cityName'] = $row['cityName'];
+                        $response[] = $temp;
+                    }
 				}
 			}
 		return $response;
@@ -168,6 +170,13 @@
 				exit;
 			}
 		}
+
+        public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void {
+            $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'savedLocations(savedLocationRegisteredId, savedLocationCityId, savedLocationStrName, savedLocationHouseNum) VALUES (?, ?, ?, ?)');
+            if($sql->bind_param('iiss', $_SESSION['id'], $newLocCityId, $newLocStrName, $newLocHouseNum)){
+                $sql->execute();
+            }
+        }
 
 		/**
 		 * @return mixed

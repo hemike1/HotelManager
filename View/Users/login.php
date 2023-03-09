@@ -7,7 +7,7 @@
 ?>
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-lg-5">
+        <div class="col-12 col-sm-12 col-md-10 col-lg-5">
             <div class="card">
                 <div class="card-header text-center bg-custom text-white">
                     <h2 class="my-1">Üdvözöljük!</h2>
@@ -40,7 +40,6 @@
  if(!empty($error_password) || !empty($error_email)){ //got this snippet from tokrist, with thge help of sweetalert2. ?>
     <script>
         setTimeout(function (){
-            console.log("lksdjafhglksjhdgf");
             Swal.fire({
                 icon: 'error',
                 title: 'Hibás adatok!',

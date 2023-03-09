@@ -21,8 +21,10 @@
 		}
 	?>
 </div>
+
 <!-- Modal -->
-<div class="modal fade modal-xl" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+
+<div class="modal fade modal-xl" id="reservationModal" tabindex="-1" aria-labelledby="reservationModalLabel" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -49,31 +51,41 @@
                     <div class="col-8 g-2">
                         <input type="text" id="reservRoomId" hidden readonly>
                         <select class="form-select mb-3" id="cities" onchange="disableInputs()" required>
-                            <option selected disabled>Elmentett számlázási adatok</option>
+                            <option value="" selected disabled>Elmentett számlázási adatok</option>
+                            <option value="new">Új számlázási hely felvétele</option>
                             <?php
-                            $writeable = false;
                                 if(!empty($locations)){
                                     foreach($locations as $location){
                                         echo '<option value="'.$location['id'].'">'.$location['postNum'].' '.$location['cityName'].' '.$location['streetName'].' '.$location['houseNum'].'</option>';
                                     }
-                                } else {
-                                    echo '<option value="">Új számlázási adatok</option>';
                                 }
                             ?>
                         </select>
                         <div class="row">
                             <div class="col-12">
-                                <div class="input-group col-6">
-                                    <span class="input-group-text"><i class="fa-regular fa-apartment"></i></span>
-                                    <input type="text" class="form-control" id="postNum" placeholder="Irányítószám">
-                                    <span class="input-group-text"><i class="fa-regular fa-tag"></i></span>
-                                    <input type="text" class="form-control" id="cityname" placeholder="Város neve">
+                                <input type="text" name="cityid" data-live-search="true" id="cityid" hidden disabled>
+                                <div class="input-group mb-3">
+                                    <select class="select2 form-select" id="cidyandpostnum" name="state">
+                                        <?php
+                                        foreach($cities as $city){
+                                            echo '<option value="'.$city['id'].'">'.$city['postNum'].' '.$city['cityName'].'</option>';
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-                                <div class="input-group col-6">
+                                <div class="input-group col-6 mb-5">
                                     <span class="input-group-text"><i class="fa-regular fa-road"></i></span>
-                                    <input type="text" class="form-control" id="strname" placeholder="Utca neve">
+                                    <input type="text" class="form-control" name="strname" id="strname" placeholder="Utca neve">
                                     <span class="input-group-text"><i class="fa-regular fa-input-numeric"></i></span>
-                                    <input type="text" class="form-control" id="housenum" placeholder="Házszám">
+                                    <input type="text" class="form-control" name="housenum" id="housenum" placeholder="Házszám">
+                                </div>
+                                <div class="input-group mt-5">
+                                    <span class="input-group-text">Szoba foglalás kezdete</span>
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <span class="input-group-text">Szoba foglalás vége</span>
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                             </div>
                         </div>
@@ -88,10 +100,8 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous"></script>
 <script>
-    var cities = document.getElementById('cities');
+    var cities = document.getElementById('cidyandpostnum');
     function reservRoom(roomId){
         $.ajax({
             url: '/korondi/Assets/php/reservRoom.php',
@@ -111,30 +121,42 @@
         });
     }
     function disableInputs(){
+
+        const cityid = document.getElementById('cidyandpostnum').value;
+        console.log(cityid);
         const inputPost = document.getElementById('postNum');
         const inputCity = document.getElementById('cityname');
         const inputStreet = document.getElementById('strname');
         const inputNumber = document.getElementById('housenum');
-        if(cities.value != ""){
-            inputPost.disabled = true;
-            inputCity.disabled = true;
-            inputStreet.disabled = true;
-            inputNumber.disabled = true;
-        } else {
+        if(cities.options[cities.selectedIndex].value !== "" || cities.options[cities.selectedIndex].value !== "new"){
             const selectedid = cities.value;
             const selectedText = cities.options[cities.selectedIndex].text;
-            console.log(selectedText);
             const datas = selectedText.split(" ");
-            let varPostNumber = datas[0];
-            let varCityName = datas[1];
             let varStreetName = datas[2];
-            let varStreetNameDesignation = datas[3];
-            let varHouseNumber = datas[4];
+            let varStreetNameDesignation = datas[1];
+            let varHouseNumber = datas[2];
+            cityid.setAttribute('value', selectedid);
+
+            inputStreet.disabled = true;
+            inputStreet.value.replace(inputStreet.value, inputStreet.value = varStreetName+" "+varStreetNameDesignation);
+            inputNumber.disabled = true;
+            inputNumber.value.replace(inputNumber.value, inputNumber.value = varHouseNumber);
+        } else {
+            selectedid.value = "";
             inputPost.disabled = false;
-            inputPost.setAttribute('value', varPostNumber);
+            inputPost.value = "";
             inputCity.disabled = false;
+            inputCity.value = "";
             inputStreet.disabled = false;
+            inputStreet.value = "";
             inputNumber.disabled = false;
+            inputNumber.value = "";
         }
     }
+    $(document).ready(function(){
+        $('.select2').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $('#reservationModal')
+        });
+    });
 </script>

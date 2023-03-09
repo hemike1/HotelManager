@@ -13,6 +13,14 @@ class reservationController extends Database {
 		$locations = $user->getSavedLocations($_SESSION['id']);
 		$cities = $user->getAllCities();
 
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(!isset($_POST['cityid'])){
+                $newLocCityId = $_POST[''];
+                $newLocStrName = $_POST[''];
+                $newLocHouseNum = $_POST[''];
+            }
+        }
+
 		require_once 'View/layout/mainHeader.php';
 		require_once 'View/layout/sidebar.php';
 		require_once 'View/Users/reservation.php';
