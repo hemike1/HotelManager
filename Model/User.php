@@ -171,10 +171,62 @@
 			}
 		}
 
-        public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void {
+        public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void { //info: adds new saved location for easyer data storage
             $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'savedLocations(savedLocationRegisteredId, savedLocationCityId, savedLocationStrName, savedLocationHouseNum) VALUES (?, ?, ?, ?)');
             if($sql->bind_param('iiss', $_SESSION['id'], $newLocCityId, $newLocStrName, $newLocHouseNum)){
                 $sql->execute();
+            }
+        }
+
+        public function getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): int { //info: fetch data from db to check if saved location exists in db
+            $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHoustNum = ?');
+            if($sql->bind_param('iss', $newLocCityId, $newLocStrName, $newLocHouseNum)){
+                $sql->execute();
+                if($result = $sql->get_result()){
+                    if($result->num_rows > 0){
+                        $row = $result->fetch_assoc();
+                        return $row['savedLocationId'];
+                    }
+                }
+            }
+        }
+
+        public function addReservation($addResRoomId, $addResStartDate, $addResEndDate): void{ //info: adds a single new reservation
+            $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'reservations(reservationRegisteredId, reservationRoomId, reservationStartingT, reservationEndT) VALUES (?, ?, ?, ?)');
+            if($sql->bind_param('iiss', $_SESSION['id'], $addResRoomId, $addResStartDate, $addResEndDate)){
+                $sql->execute();
+            }
+        }
+
+        public function getReservation($addResRoomId, $addResStartDate, $addResEndDate): int {
+            $sql = $this->prepare('SELECT reservationId FROM '.$GLOBALS['prefix'].'reservations WHERE reservationRegisteredId = ? AND reservationRoomId = ? AND reservationStartingT = ? AND reservationEndT = ?');
+            if($sql->bind_param('iiss', $_SESSION['id'], $addResRoomId, $addResStartDate, $addResEndDate)){
+                $sql->execute();
+                if($result = $sql->get_result()){
+                    if($result->num_rows > 0){
+                        $row = $result->fetch_assoc();
+                        return $row['reservationId'];
+                    }
+                }
+            }
+        }
+
+        public function newInvoice($invoiceReservId, $invoiceIssueDate, $invoicePaymentDeadline, $invoicePrePaid, $invoiceSavedLocationId): void{ //IMPORTANT: last to be run by newFullReservation function
+            $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'invoice(invoiceReservId, invoiceIssueDate, invoicePaymentDeadline, invoicePrePaid, invoiceSavedLocationId) VALUES (?, ?, ?, ?, ?)');
+            if($sql->bind_param('issii', $invoiceReservId, $invoiceIssueDate, $invoicePaymentDeadline, $invoicePrePaid, $invoiceSavedLocationId)){
+                $sql->execute();
+            }
+        }
+
+        public function newFullReservation($newLocCityId, $newLocStrName, $newLocHouseNum, $addResRoomId, $addResStartDate, $addResEndDate): void{ //info: will run the whole pack of functions: addReservation, addInvoice, newSavedLocation
+            if(isset($newLocCityId) && isset($newLocStrName) && isset($newLocHouseNum)){
+                $this->newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
+                $this->addReservation($addResRoomId, $addResStartDate, $addResEndDate);
+                $invoiceReservId = $this->getReservation($addResRoomId, $addResStartDate, $addResEndDate);
+                $invoiceIssueDate = date('Y-m-d');
+                $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
+                $savedLocId = $this->getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
+                $this->newInvoice($invoiceReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $savedLocId);
             }
         }
 

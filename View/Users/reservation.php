@@ -30,7 +30,7 @@
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+            <form method="post">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4">
@@ -49,8 +49,8 @@
                         </div>
                     </div>
                     <div class="col-8 g-2">
-                        <input type="text" id="reservRoomId" hidden readonly>
-                        <select class="form-select mb-3" id="billingData" onchange="setBillingData()" required>
+                        <input type="text" id="reservRoomId" readonly>
+                        <select class="form-select mb-3" id="billingData" name="billingData" onchange="setBillingData()" required>
                             <option value="" selected disabled>Elmentett számlázási adatok</option>
                             <option value="new">Új számlázási hely felvétele</option>
                             <?php
@@ -63,7 +63,6 @@
                         </select>
                         <div class="row">
                             <div class="col-12">
-                                <input type="text" name="cityid" data-live-search="true" id="cityid" hidden disabled>
                                 <div class="input-group mb-3">
                                     <select class="select2 form-select" id="cidyandpostnum" name="state">
                                         <?php
@@ -81,11 +80,11 @@
                                 </div>
                                 <div class="input-group mt-5">
                                     <span class="input-group-text">Szoba foglalás kezdete</span>
-                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" name="reservStartDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <span class="input-group-text">Szoba foglalás vége</span>
-                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" name="reservEndDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +115,7 @@
                 document.getElementById('reservPrewNumbers').innerHTML = "Emelet: "+data["floor"]+" | Szobaszám: "+data["number"];
                 document.getElementById('reservPrewAccom').innerHTML = "Kapacitás: "+data["accomodation"]+" Fő";
                 document.getElementById('reservPrewSize').innerHTML = "Szoba méret: "+data["size"];
-                document.getElementById('reservRoomId').innerHTML = data["roomId"];
+                document.getElementById('reservRoomId').value = data["roomId"];
             }
         });
     }
@@ -155,4 +154,5 @@
             dropdownParent: $('#reservationModal')
         });
     });
+
 </script>

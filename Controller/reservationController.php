@@ -14,12 +14,20 @@ class reservationController extends Database {
 		$cities = $user->getAllCities();
 
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
-            if(!isset($_POST['cityid'])){
-                $newLocCityId = $_POST[''];
-                $newLocStrName = $_POST[''];
-                $newLocHouseNum = $_POST[''];
+            if($_POST['billingData'] === "new" && $_POST['billingData'] === ""){
+                $newLocCityId = $_POST['billingData'];
+                $newLocStrName = $_POST['strname'];
+                $newLocHouseNum = $_POST['housenum'];
+                if(isset($_POST['reservStartDate']) && isset($_POST['reservEndDate'])){
+                    $addResRoomId = $_POST['reservRoomId'];
+                    $addResStartDate = $_POST['reservStartDate'];
+                    $addResEndDate = $_POST['reservEndDate'];
+                    $user->newFullReservation($newLocCityId, $newLocStrName, $newLocHouseNum, $addResRoomId, $addResStartDate, $addResEndDate);
+                }
             }
         }
+
+
 
 		require_once 'View/layout/mainHeader.php';
 		require_once 'View/layout/sidebar.php';
