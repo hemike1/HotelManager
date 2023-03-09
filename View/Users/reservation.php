@@ -2,7 +2,7 @@
 	<?php
 	    foreach($rooms as $roomInfo) {
 			echo '  
-  			<div class="col-12 col-md-6 col-lg-3">
+  			<div class="col-12 col-sm-12 col-md-6 col-xl-4 col-xxl-3" >
 	        	<div class="card mb-2">
 	        	    <img src="' . $room->getRoomImgDir() . '/' . $roomInfo['image'] . '" class="card-img-top img-thumbnail">
 	        	    <div class="card-body">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-8 g-2">
                         <input type="text" id="reservRoomId" hidden readonly>
-                        <select class="form-select mb-3" id="cities" onchange="disableInputs()" required>
+                        <select class="form-select mb-3" id="billingData" onchange="setBillingData()" required>
                             <option value="" selected disabled>Elmentett számlázási adatok</option>
                             <option value="new">Új számlázási hely felvétele</option>
                             <?php
@@ -120,39 +120,35 @@
             }
         });
     }
-    function disableInputs(){
 
-        const cityid = document.getElementById('cidyandpostnum').value;
-        console.log(cityid);
-        const inputPost = document.getElementById('postNum');
-        const inputCity = document.getElementById('cityname');
-        const inputStreet = document.getElementById('strname');
-        const inputNumber = document.getElementById('housenum');
-        if(cities.options[cities.selectedIndex].value !== "" || cities.options[cities.selectedIndex].value !== "new"){
-            const selectedid = cities.value;
-            const selectedText = cities.options[cities.selectedIndex].text;
-            const datas = selectedText.split(" ");
-            let varStreetName = datas[2];
-            let varStreetNameDesignation = datas[1];
-            let varHouseNumber = datas[2];
-            cityid.setAttribute('value', selectedid);
-
-            inputStreet.disabled = true;
-            inputStreet.value.replace(inputStreet.value, inputStreet.value = varStreetName+" "+varStreetNameDesignation);
-            inputNumber.disabled = true;
-            inputNumber.value.replace(inputNumber.value, inputNumber.value = varHouseNumber);
+    function setBillingData(){
+        const billingId = document.getElementById('billingData');
+        const selectedBilling = billingId.value;
+        if(billingId.options[billingId.selectedIndex].value !== "" && billingId.options[billingId.selectedIndex].value !== "new") {
+            $.ajax({
+                url: '/korondi/Assets/php/getbillinginfo.php',
+                method: 'POST',
+                data: {'billId': billingId.value},
+                success: function(response){
+                    var data = JSON.parse(response);
+                    document.getElementById('cidyandpostnum').value = data['cityId'];
+                    $('.select2').trigger('change');
+                    $('#cidyandpostnum').prop('disabled', true);
+                    document.getElementById('strname').value = data['street'];
+                    document.getElementById('housenum').value = data['houseNum']
+                    document.getElementById('strname').disabled = true;
+                    document.getElementById('housenum').disabled = true;
+                }
+            })//ajax
         } else {
-            selectedid.value = "";
-            inputPost.disabled = false;
-            inputPost.value = "";
-            inputCity.disabled = false;
-            inputCity.value = "";
-            inputStreet.disabled = false;
-            inputStreet.value = "";
-            inputNumber.disabled = false;
-            inputNumber.value = "";
+            $('#cidyandpostnum').prop('disabled', false);
+            document.getElementById('strname').value = "";
+            document.getElementById('housenum').value = "";
+            document.getElementById('strname').disabled = false;
+            document.getElementById('housenum').disabled = false;
         }
     }
+
     $(document).ready(function(){
         $('.select2').select2({
             theme: 'bootstrap-5',
