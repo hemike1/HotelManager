@@ -2,7 +2,7 @@
 	<?php
 	    foreach($rooms as $roomInfo) {
 			echo '  
-  			<div class="col-12 col-sm-12 col-md-6 col-xl-4 col-xxl-3" >
+  			<div class="col-12 col-md-6 col-lg-3">
 	        	<div class="card mb-2">
 	        	    <img src="' . $room->getRoomImgDir() . '/' . $roomInfo['image'] . '" class="card-img-top img-thumbnail">
 	        	    <div class="card-body">
@@ -30,7 +30,7 @@
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post">
+            <form>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4">
@@ -49,8 +49,8 @@
                         </div>
                     </div>
                     <div class="col-8 g-2">
-                        <input type="text" id="reservRoomId" readonly>
-                        <select class="form-select mb-3" id="billingData" name="billingData" onchange="setBillingData()" required>
+                        <input type="text" id="reservRoomId" hidden readonly>
+                        <select class="form-select mb-3" id="billingData" name="billingData" onchange="disableInputs()" required>
                             <option value="" selected disabled>Elmentett számlázási adatok</option>
                             <option value="new">Új számlázási hely felvétele</option>
                             <?php
@@ -63,6 +63,7 @@
                         </select>
                         <div class="row">
                             <div class="col-12">
+                                <input type="text" name="cityid" data-live-search="true" id="cityid" hidden disabled>
                                 <div class="input-group mb-3">
                                     <select class="select2 form-select" id="cidyandpostnum" name="state">
                                         <?php
@@ -80,11 +81,11 @@
                                 </div>
                                 <div class="input-group mt-5">
                                     <span class="input-group-text">Szoba foglalás kezdete</span>
-                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" name="reservStartDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                    <input type="date" class="form-control" name="reservStartDate" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <span class="input-group-text">Szoba foglalás vége</span>
-                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" name="reservEndDate" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                    <input type="date" class="form-control" name="reservEndDate" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                             </div>
                         </div>
@@ -119,40 +120,39 @@
             }
         });
     }
+    function disableInputs(){
 
-    function setBillingData(){
-        const billingId = document.getElementById('billingData');
-        const selectedBilling = billingId.value;
-        if(billingId.options[billingId.selectedIndex].value !== "" && billingId.options[billingId.selectedIndex].value !== "new") {
-            $.ajax({
-                url: '/korondi/Assets/php/getbillinginfo.php',
-                method: 'POST',
-                data: {'billId': billingId.value},
-                success: function(response){
-                    var data = JSON.parse(response);
-                    document.getElementById('cidyandpostnum').value = data['cityId'];
-                    $('.select2').trigger('change');
-                    $('#cidyandpostnum').prop('disabled', true);
-                    document.getElementById('strname').value = data['street'];
-                    document.getElementById('housenum').value = data['houseNum']
-                    document.getElementById('strname').disabled = true;
-                    document.getElementById('housenum').disabled = true;
-                }
-            })//ajax
-        } else {
-            $('#cidyandpostnum').prop('disabled', false);
-            document.getElementById('strname').value = "";
-            document.getElementById('housenum').value = "";
-            document.getElementById('strname').disabled = false;
-            document.getElementById('housenum').disabled = false;
+        function setBillingData(){
+            const billingId = document.getElementById('billingData');
+            const selectedBilling = billingId.value;
+            if(billingId.options[billingId.selectedIndex].value !== "" && billingId.options[billingId.selectedIndex].value !== "new") {
+                $.ajax({
+                    url: '/korondi/Assets/php/getbillinginfo.php',
+                    method: 'POST',
+                    data: {'billId': billingId.value},
+                    success: function(response){
+                        var data = JSON.parse(response);
+                        document.getElementById('cidyandpostnum').value = data['cityId'];
+                        $('.select2').trigger('change');
+                        $('#cidyandpostnum').prop('disabled', true);
+                        document.getElementById('strname').value = data['street'];
+                        document.getElementById('housenum').value = data['houseNum']
+                        document.getElementById('strname').disabled = true;
+                        document.getElementById('housenum').disabled = true;
+                    }
+                })//ajax
+            } else {
+                $('#cidyandpostnum').prop('disabled', false);
+                document.getElementById('strname').value = "";
+                document.getElementById('housenum').value = "";
+                document.getElementById('strname').disabled = false;
+                document.getElementById('housenum').disabled = false;
+            }
         }
-    }
-
     $(document).ready(function(){
         $('.select2').select2({
             theme: 'bootstrap-5',
             dropdownParent: $('#reservationModal')
         });
     });
-
 </script>

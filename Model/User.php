@@ -219,14 +219,21 @@
         }
 
         public function newFullReservation($newLocCityId, $newLocStrName, $newLocHouseNum, $addResRoomId, $addResStartDate, $addResEndDate): void{ //info: will run the whole pack of functions: addReservation, addInvoice, newSavedLocation
-            if(isset($newLocCityId) && isset($newLocStrName) && isset($newLocHouseNum)){
-                $this->newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
+            $getLocationId = $this->getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
+            if($getLocationId > 0){
                 $this->addReservation($addResRoomId, $addResStartDate, $addResEndDate);
-                $invoiceReservId = $this->getReservation($addResRoomId, $addResStartDate, $addResEndDate);
+                $getReservId = $this->getReservation($addResRoomId, $addResStartDate, $addResEndDate);
                 $invoiceIssueDate = date('Y-m-d');
                 $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
-                $savedLocId = $this->getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
-                $this->newInvoice($invoiceReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $savedLocId);
+                $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $getLocationId);
+            } else {
+                $this->newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
+                $gotNewLocationId = $this->getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
+                $this->addReservation($addResRoomId, $addResStartDate, $addResEndDate);
+                $getReservId = $this->getReservation($addResRoomId, $addResStartDate, $addResEndDate);
+                $invoiceIssueDate = date('Y-m-d');
+                $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
+                $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $getLocationId);
             }
         }
 
