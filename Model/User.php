@@ -5,7 +5,7 @@ class User extends Database {
     private $lastname;
     private $email;
     private $permission;
-    
+
     public function checkLogin($email, $password): array {
         $sql = $this->prepare('SELECT registeredId, registeredEmail, registeredPassword FROM '.$GLOBALS['prefix'].'registered WHERE registeredEmail = ?');
         $enckEm = $this->encryptData($email);
@@ -111,23 +111,21 @@ class User extends Database {
         if($sql->bind_param('i', $id)) {
             $sql->execute();
             if($result = $sql->get_result()){
-                if($result->num_rows > 0){
-                    $row = $result->fetch_assoc();
-                    $sql2 = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'cities WHERE cityId = ?');
-                    $sql2->bind_param('i', $row['savedLocationCityId']);
-                    $sql2->execute();
-                    if($result2 = $sql2->get_result()){
-
-                        $row2 = $result2->fetch_assoc();
-
-                        $temp['id'] = $row['savedLocationId'];
-                        $temp['postNum'] = $row2['cityPostNum'];
-                        $temp['cityName'] = $row2['cityName'];
-                        $temp['streetName'] = $row['savedLocationStrName'];
-                        $temp['houseNum'] = $row['savedLocationHouseNum'];
-                        $response[] = $temp;
-                    } else {
-                        return $vaneCity = true;
+                if($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $sql2 = $this->prepare('SELECT * FROM ' . $GLOBALS['prefix'] . 'cities WHERE cityId = ?');
+                        $sql2->bind_param('i', $row['savedLocationCityId']);
+                        $sql2->execute();
+                        if ($result2 = $sql2->get_result()) {
+                            while ($row2 = $result2->fetch_assoc()) {
+                                $temp['id'] = $row['savedLocationId'];
+                                $temp['postNum'] = $row2['cityPostNum'];
+                                $temp['cityName'] = $row2['cityName'];
+                                $temp['streetName'] = $row['savedLocationStrName'];
+                                $temp['houseNum'] = $row['savedLocationHouseNum'];
+                                $response[] = $temp;
+                            }
+                        }
                     }
                 }
             }
@@ -176,16 +174,19 @@ class User extends Database {
     }
 
     public function getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): int { //info: fetch data from db to check if saved location exists in db
-        $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHoustNum = ?');
+        $returnable = 0;
+        $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHouseNum = ?');
         if($sql->bind_param('iss', $newLocCityId, $newLocStrName, $newLocHouseNum)){
             $sql->execute();
             if($result = $sql->get_result()){
                 if($result->num_rows > 0){
                     $row = $result->fetch_assoc();
-                    return $row['savedLocationId'];
+                    $returnable = $row['savedLocationId'];
+                    return $returnable;
                 }
             }
         }
+        return $returnable;
     }
 
     public function addReservation($addResRoomId, $addResStartDate, $addResEndDate): void{ //info: adds a single new reservation
@@ -196,16 +197,19 @@ class User extends Database {
     }
 
     public function getReservation($addResRoomId, $addResStartDate, $addResEndDate): int {
+        $returnable = 0;
         $sql = $this->prepare('SELECT reservationId FROM '.$GLOBALS['prefix'].'reservations WHERE reservationRegisteredId = ? AND reservationRoomId = ? AND reservationStartingT = ? AND reservationEndT = ?');
         if($sql->bind_param('iiss', $_SESSION['id'], $addResRoomId, $addResStartDate, $addResEndDate)){
             $sql->execute();
             if($result = $sql->get_result()){
                 if($result->num_rows > 0){
                     $row = $result->fetch_assoc();
-                    return $row['reservationId'];
+                    $returnable = $row['reservationId'];
+                    return $returnable;
                 }
             }
         }
+        return $returnable;
     }
 
     public function newInvoice($invoiceReservId, $invoiceIssueDate, $invoicePaymentDeadline, $invoicePrePaid, $invoiceSavedLocationId): void{ //IMPORTANT: last to be run by newFullReservation function
@@ -223,6 +227,7 @@ class User extends Database {
             $invoiceIssueDate = date('Y-m-d');
             $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
             $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $getLocationId);
+            echo 'asdasd';
         } else {
             $this->newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
             $gotNewLocationId = $this->getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
@@ -230,7 +235,8 @@ class User extends Database {
             $getReservId = $this->getReservation($addResRoomId, $addResStartDate, $addResEndDate);
             $invoiceIssueDate = date('Y-m-d');
             $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
-            $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $getLocationId);
+            $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $gotNewLocationId);
+            echo 'aaaa';
         }
     }
 

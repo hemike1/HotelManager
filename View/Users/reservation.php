@@ -30,7 +30,7 @@
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+            <form method="post">
             <div class="modal-body">
                 <div class="row">
                     <div class="col-4">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="col-8 g-2">
-                        <input type="text" id="reservRoomId" hidden readonly>
+                        <input type="text" id="reservRoomId" name="reservRoomId" hidden readonly>
                         <select class="form-select mb-3" id="billingData" name="billingData" onchange="setBillingData()" required>
                             <option value="" selected disabled>Elmentett számlázási adatok</option>
                             <option value="new">Új számlázási hely felvétele</option>
@@ -65,7 +65,7 @@
                             <div class="col-12">
                                 <input type="text" name="cityid" data-live-search="true" id="cityid" hidden disabled>
                                 <div class="input-group mb-3">
-                                    <select class="select2 form-select" id="cidyandpostnum" name="state">
+                                    <select class="select2 form-select" id="cityandpostnum" name="cityandpostnum">
                                         <?php
                                         foreach($cities as $city){
                                             echo '<option value="'.$city['id'].'">'.$city['postNum'].' '.$city['cityName'].'</option>';
@@ -75,9 +75,9 @@
                                 </div>
                                 <div class="input-group col-6 mb-5">
                                     <span class="input-group-text"><i class="fa-regular fa-road"></i></span>
-                                    <input type="text" class="form-control" name="strname" id="strname" placeholder="Utca neve">
+                                    <input type="text" class="form-control" name="strname" id="strname"  placeholder="Utca neve">
                                     <span class="input-group-text"><i class="fa-regular fa-input-numeric"></i></span>
-                                    <input type="text" class="form-control" name="housenum" id="housenum" placeholder="Házszám">
+                                    <input type="text" class="form-control" name="houseNumber" id="houseNumber"  placeholder="Házszám">
                                 </div>
                                 <div class="input-group mt-5">
                                     <span class="input-group-text">Szoba foglalás kezdete</span>
@@ -109,6 +109,7 @@
             data: {'roomId': roomId},
             success: function (response){
                 var data = JSON.parse(response);
+                document.getElementById('reservRoomId').value = data["roomId"]
                 document.getElementById('reservPrewImage').src = "/korondi/Assets/images/rooms/"+data["image"];
                 document.getElementById('reservPrewDesc').innerHTML = data["description"];
                 document.getElementById('reservPrewFeature').innerHTML = data["features"];
@@ -130,21 +131,25 @@
                     data: {'billId': billingId.value},
                     success: function(response){
                         var data = JSON.parse(response);
-                        document.getElementById('cidyandpostnum').value = data['cityId'];
-                        $('.select2').trigger('change');
-                        $('#cidyandpostnum').prop('disabled', true);
+                        console.log(data);
+                        document.getElementById('cityandpostnum').value = data['cityId'];
+                        $('#cityandpostnum').val(data['cityId']);
+
                         document.getElementById('strname').value = data['street'];
-                        document.getElementById('housenum').value = data['houseNum']
-                        document.getElementById('strname').disabled = true;
-                        document.getElementById('housenum').disabled = true;
+                        document.getElementById('houseNumber').value = data['houseNum'];
+
+                        document.getElementById('strname').readOnly = true;
+                        document.getElementById('houseNumber').readOnly = true;
+                        $('#cidyandpostnum').prop('disabled', true);
+                        $('.select2').trigger('change');
                     }
                 })//ajax
             } else {
                 $('#cidyandpostnum').prop('disabled', false);
                 document.getElementById('strname').value = "";
-                document.getElementById('housenum').value = "";
-                document.getElementById('strname').disabled = false;
-                document.getElementById('housenum').disabled = false;
+                document.getElementById('houseNumber').value = "";
+                document.getElementById('strname').readOnly = false;
+                document.getElementById('houseNumber').readOnly = false;
             }
         }
     $(document).ready(function(){

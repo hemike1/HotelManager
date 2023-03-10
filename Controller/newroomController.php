@@ -13,7 +13,6 @@ class newroomController extends Database {
 		$user->checkAdmin();
 
 		if($_SERVER['REQUEST_METHOD'] == 'POST'){
-			print_r($_FILES['formFile']);
 			$accom = $_POST['formAcc'];
 			$size = $_POST['formSize'];
 			$floor = $_POST['formRoomFloor'];
