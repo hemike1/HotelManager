@@ -50,7 +50,11 @@
                     </div>
                     <div class="col-8 g-2">
                         <input type="text" id="reservRoomId" hidden readonly>
+<<<<<<< HEAD
                         <select class="form-select mb-3" id="billingData" name="billingData" onchange="disableInputs()" required>
+=======
+                        <select class="form-select mb-3" id="billingData" onchange="setBillingData()" required>
+>>>>>>> parent of 3902605 (Made functions to make new db inserts.)
                             <option value="" selected disabled>Elmentett számlázási adatok</option>
                             <option value="new">Új számlázási hely felvétele</option>
                             <?php
@@ -81,11 +85,19 @@
                                 </div>
                                 <div class="input-group mt-5">
                                     <span class="input-group-text">Szoba foglalás kezdete</span>
+<<<<<<< HEAD
                                     <input type="date" class="form-control" name="reservStartDate" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <span class="input-group-text">Szoba foglalás vége</span>
                                     <input type="date" class="form-control" name="reservEndDate" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+=======
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <span class="input-group-text">Szoba foglalás vége</span>
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+>>>>>>> parent of 3902605 (Made functions to make new db inserts.)
                                 </div>
                             </div>
                         </div>
@@ -116,7 +128,7 @@
                 document.getElementById('reservPrewNumbers').innerHTML = "Emelet: "+data["floor"]+" | Szobaszám: "+data["number"];
                 document.getElementById('reservPrewAccom').innerHTML = "Kapacitás: "+data["accomodation"]+" Fő";
                 document.getElementById('reservPrewSize').innerHTML = "Szoba méret: "+data["size"];
-                document.getElementById('reservRoomId').value = data["roomId"];
+                document.getElementById('reservRoomId').innerHTML = data["roomId"];
             }
         });
     }

@@ -171,13 +171,14 @@
 			}
 		}
 
-        public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void { //info: adds new saved location for easyer data storage
+        public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void {
             $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'savedLocations(savedLocationRegisteredId, savedLocationCityId, savedLocationStrName, savedLocationHouseNum) VALUES (?, ?, ?, ?)');
             if($sql->bind_param('iiss', $_SESSION['id'], $newLocCityId, $newLocStrName, $newLocHouseNum)){
                 $sql->execute();
             }
         }
 
+<<<<<<< HEAD
         public function getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): int { //info: fetch data from db to check if saved location exists in db
             $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHoustNum = ?');
             if($sql->bind_param('iss', $newLocCityId, $newLocStrName, $newLocHouseNum)){
@@ -237,6 +238,8 @@
             }
         }
 
+=======
+>>>>>>> parent of 3902605 (Made functions to make new db inserts.)
 		/**
 		 * @return mixed
 		 */
