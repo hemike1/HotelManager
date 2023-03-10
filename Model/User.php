@@ -179,6 +179,7 @@
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         public function getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): int { //info: fetch data from db to check if saved location exists in db
             $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHoustNum = ?');
             if($sql->bind_param('iss', $newLocCityId, $newLocStrName, $newLocHouseNum)){
@@ -238,6 +239,8 @@
             }
         }
 
+=======
+>>>>>>> parent of 3902605 (Made functions to make new db inserts.)
 =======
 >>>>>>> parent of 3902605 (Made functions to make new db inserts.)
 		/**

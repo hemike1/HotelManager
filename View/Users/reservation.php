@@ -51,7 +51,11 @@
                     <div class="col-8 g-2">
                         <input type="text" id="reservRoomId" hidden readonly>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <select class="form-select mb-3" id="billingData" name="billingData" onchange="disableInputs()" required>
+=======
+                        <select class="form-select mb-3" id="billingData" onchange="setBillingData()" required>
+>>>>>>> parent of 3902605 (Made functions to make new db inserts.)
 =======
                         <select class="form-select mb-3" id="billingData" onchange="setBillingData()" required>
 >>>>>>> parent of 3902605 (Made functions to make new db inserts.)
@@ -86,11 +90,19 @@
                                 <div class="input-group mt-5">
                                     <span class="input-group-text">Szoba foglalás kezdete</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     <input type="date" class="form-control" name="reservStartDate" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <span class="input-group-text">Szoba foglalás vége</span>
                                     <input type="date" class="form-control" name="reservEndDate" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+=======
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+                                </div>
+                                <div class="input-group mt-3">
+                                    <span class="input-group-text">Szoba foglalás vége</span>
+                                    <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
+>>>>>>> parent of 3902605 (Made functions to make new db inserts.)
 =======
                                     <input type="date" class="form-control" placeholder="ÉÉÉÉ-HH-NN" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 </div>
