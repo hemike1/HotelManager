@@ -16,8 +16,6 @@ class reservationController extends Database
         $cities = $user->getAllCities();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo 'alksjhdflkjashdflkjhasdflkjhasdf';
-            print_r($_POST);
             $newLocCityId = $_POST['cityandpostnum'];
             $newLocStrName = $_POST['strname'];
             $newLocHouseNum = $_POST['houseNumber'];

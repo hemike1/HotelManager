@@ -105,7 +105,7 @@ class User extends Database {
         return $response;
     }
 
-    public function getSavedLocations($id){
+    public function getSavedLocations($id){ //info: fetches already saved locations
         $response = array();
         $sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationRegisteredId = ?');
         if($sql->bind_param('i', $id)) {
@@ -133,7 +133,7 @@ class User extends Database {
         return $response;
     }
 
-    public function getAllCities(): array{
+    public function getAllCities(): array{ //info: returns cities, can be used wherever.
         $response = array();
         $sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'cities');
         $sql->execute();
@@ -227,7 +227,6 @@ class User extends Database {
             $invoiceIssueDate = date('Y-m-d');
             $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
             $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $getLocationId);
-            echo 'asdasd';
         } else {
             $this->newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
             $gotNewLocationId = $this->getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum);
@@ -236,7 +235,27 @@ class User extends Database {
             $invoiceIssueDate = date('Y-m-d');
             $invoicePaymentDeadline = date('Y-m-d', strtotime($invoiceIssueDate. '+ 3 days'));
             $this->newInvoice($getReservId, $invoiceIssueDate, $invoicePaymentDeadline, 0, $gotNewLocationId);
-            echo 'aaaa';
+        }
+    }
+
+    public function getUsersReservations(): array { //info: fetches users past reservations.
+        $sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'reservations WHERE reservationRegisteredId = ?');
+        if($sql->bind_param('i', $_SESSION['id'])){
+            $sql->execute();
+            if($result = $sql->get_result()){
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        $temp[''] = $row['reservation'];
+                        $temp[''] = $row['reservation'];
+                        $temp[''] = $row['reservation'];
+                        $temp[''] = $row['reservation'];
+                        $temp[''] = $row[''];
+                        $temp[''] = $row[''];
+                        $temp[''] = $row[''];
+                        $temp[''] = $row[''];
+                    }
+                }
+            }
         }
     }
 
