@@ -238,25 +238,44 @@ class User extends Database {
         }
     }
 
-    public function getUsersReservations(): array { //info: fetches users past reservations.
+    public function getUsersReservations($id): array { //info: fetches users past reservations.
+        $response = array();
         $sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'reservations WHERE reservationRegisteredId = ?');
-        if($sql->bind_param('i', $_SESSION['id'])){
+        if($sql->bind_param('i', $id)){
             $sql->execute();
             if($result = $sql->get_result()){
                 if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()){
-                        $temp[''] = $row['reservation'];
-                        $temp[''] = $row['reservation'];
-                        $temp[''] = $row['reservation'];
-                        $temp[''] = $row['reservation'];
-                        $temp[''] = $row[''];
-                        $temp[''] = $row[''];
-                        $temp[''] = $row[''];
-                        $temp[''] = $row[''];
+                        $temp['roomId'] = $row['reservationRoomId'];
+                        $temp['startTime'] = $row['reservationStartingT'];
+                        $temp['endTime'] = $row['reservationEndT'];
+                        $response[] = $temp;
                     }
                 }
             }
         }
+        return $response;
+    }
+
+    public function getUsersSavedLocation($id): array {
+        $response = array();
+        $sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'savedLocations INNER JOIN '.$GLOBALS['prefix'].'cities ON savedLocationCityId = cityId WHERE savedLocationRegisteredId = ?');
+        if($sql->bind_param('i', $id)){
+            $sql->execute();
+            if($result = $sql->get_result()){
+                if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()){
+                        $temp['locId'] = $row['savedLocationId'];
+                        $temp['postNum'] = $row['cityPostNum'];
+                        $temp['cityName'] = $row['cityName'];
+                        $temp['streetName'] = $row['savedLocationStrName'];
+                        $temp['houseNum'] = $row['savedLocationHouseNum'];
+                        $response[] = $temp;
+                    }
+                }
+            }
+        }
+        return $response;
     }
 
     /**

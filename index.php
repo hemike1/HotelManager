@@ -45,10 +45,6 @@
 			$controller = new LoginController();
 			$controller->logout();
 			break;
-		case '/korondi/reservation':
-			$controller = new reservationController();
-			$controller->reservation();
-			break;
         case '/korondi/review':
             $controller = new reviewConroller();
             $controller->review();
@@ -64,6 +60,14 @@
         case '/korondi/images':
             $controller = new imagesConroller();
             $controller->images();
+            break;
+        case '/korondi/profile':
+            $controller = new profileController();
+            $controller->profile();
+            break;
+        case '/korondi/savedData':
+            $controller = new savedDataController();
+            $controller->savedData();
             break;
         case '/korondi/bookie/reservations':
             $controller = new reservationsConroller();

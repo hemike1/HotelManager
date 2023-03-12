@@ -55,8 +55,9 @@
                                 <i class="fa-regular fa-plus color-custom"></i> <span class="ms-1 d-none d-sm-inline color-custom">Minden regisztrált</span> </a>
                         </li>
 					<?php endif; ?>
-                    <div class="dropdown pt-5">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                </ul>
+                <div class="dropdown pt-5 mb-3">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="d-none d-sm-inline mx-1"><?php
                             if($user->getPermission() == 1){
                                 echo '<i class="fa-light fa-user"></i>';
@@ -67,17 +68,16 @@
                                 echo '<i class="fa-regular fa-star"></i>';
                             }
                             print_r(" ".$user->getFirstName() ." ". $user->getLastName());?></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/korondi/logout">Sign out</a></li>
-                        </ul>
-                    </div>
-                </ul>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="/korondi/savedData">Mentett adataim</a></li>
+                        <li><a class="dropdown-item" href="/korondi/profile">Profilom</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/korondi/logout">Sign out</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="col py-3">
