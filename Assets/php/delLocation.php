@@ -7,6 +7,6 @@ if($_SERVER['REQUEST_METHOD'] === 'post'){
     $sql = $db->prepare('DELETE FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationId = ?');
     if($sql->bind_param('i', $_POST['id'])){
         $sql->execute();
-        echo 'Done!';
+        echo 'Done';
     }
 }

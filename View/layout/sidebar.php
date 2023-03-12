@@ -75,7 +75,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="/korondi/logout">Sign out</a></li>
+                        <li><a class="dropdown-item" href="/korondi/logout">Kilépés</a></li>
                     </ul>
                 </div>
             </div>

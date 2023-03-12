@@ -53,7 +53,7 @@
                                         <th scope="col">Szoba azonosító</th>
                                         <th scope="col">Foglalás kezdete</th>
                                         <th scope="col">Foglalás vége</th>
-                                        <th scopt="col">Gombok</th>
+                                        <th scopt="col">Szoba előnézet</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -155,7 +155,7 @@
                     timer: 2000,
                     timerProgressBar: true,
                     showConfirmButton: false
-                })
+                });
             }
             if(result.isDenied){
                 Swal.fire({
@@ -164,11 +164,12 @@
                     timer: 2000,
                     timerProgressBar: true,
                     showConfirmButton: false
-                })
+                });
             }
-        })
+        });
     }
     function delSavedLoc(id){
+        console.log("asdasd");
         $.ajax({
             url: '/korondi/Assets/php/delLocation.php',
             type: 'POST',
@@ -180,6 +181,6 @@
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus, errorThrown);
             }
-        })
+        });
     }
 </script>

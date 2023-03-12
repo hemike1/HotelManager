@@ -166,7 +166,7 @@ class User extends Database {
         }
     }
 
-    public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void { //info: adds new saved location for easyer data storage
+    public function newSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): void { //info: adds new saved location for easier data storage
         $sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'savedLocations(savedLocationRegisteredId, savedLocationCityId, savedLocationStrName, savedLocationHouseNum) VALUES (?, ?, ?, ?)');
         if($sql->bind_param('iiss', $_SESSION['id'], $newLocCityId, $newLocStrName, $newLocHouseNum)){
             $sql->execute();
@@ -175,8 +175,8 @@ class User extends Database {
 
     public function getSavedLocation($newLocCityId, $newLocStrName, $newLocHouseNum): int { //info: fetch data from db to check if saved location exists in db
         $returnable = 0;
-        $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHouseNum = ?');
-        if($sql->bind_param('iss', $newLocCityId, $newLocStrName, $newLocHouseNum)){
+        $sql = $this->prepare('SELECT savedLocationId FROM '.$GLOBALS['prefix'].'savedLocations WHERE savedLocationRegisteredId = ? AND savedLocationCityId = ? AND savedLocationStrName = ? AND savedLocationHouseNum = ?');
+        if($sql->bind_param('iiss', $_SESSION['id'], $newLocCityId, $newLocStrName, $newLocHouseNum)){
             $sql->execute();
             if($result = $sql->get_result()){
                 if($result->num_rows > 0){
