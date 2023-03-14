@@ -15,16 +15,12 @@ class AdminController extends Database {
         require_once 'View/layout/sidebar.php';
         require_once 'View/admin/registeredUsers.php';
         require_once 'View/layout/footer.php';
-
     }
 
     public function allReserv(): void {
-
         $title = "Összes foglalás";
-
         $db = new Database();
         $user = new User($db);
-
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
 
@@ -68,7 +64,6 @@ class AdminController extends Database {
     }
 
     public function reservation(): void {
-
         $title = "Foglalások";
         $db = new Database();
         $user = new User($db);
@@ -80,7 +75,6 @@ class AdminController extends Database {
         require_once 'View/layout/sidebar.php';
         require_once 'View/superuser/reservations.php';
         require_once 'View/layout/footer.php';
-
     }
 
     public function userMgmt(): void {
@@ -95,6 +89,5 @@ class AdminController extends Database {
         require_once 'View/layout/sidebar.php';
         require_once 'View/admin/usermgmt.php';
         require_once 'View/layout/footer.php';
-
     }
 }

@@ -1,5 +1,10 @@
 <?php
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+require 'Assets/plugins/PHPMailer/src/Exception.php';
+require 'Assets/plugins/PHPMailer/src/PHPMailer.php';
+require 'Assets/plugins/PHPMailer/src/SMTP.php';
 class UserController extends Database {
 
     public function savedData() {
@@ -8,7 +13,6 @@ class UserController extends Database {
         $user = new User($db);
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
-
         $usersReserv = $user->getUsersReservations($_SESSION['id']);
         $usersSavedLoc = $user->getUsersSavedLocation($_SESSION['id']);
 
@@ -25,10 +29,9 @@ class UserController extends Database {
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
 
-
         require_once 'View/layout/mainHeader.php';
         require_once 'View/layout/sidebar.php';
-
+        //require_once 'View/Users/review.php';
         require_once 'View/layout/footer.php';
     }
 
@@ -40,7 +43,6 @@ class UserController extends Database {
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
         $rooms = $room->getAllRoomData();
-
         $locations = $user->getSavedLocations($_SESSION['id']);
         $cities = $user->getAllCities();
 
@@ -52,6 +54,46 @@ class UserController extends Database {
             $addResStartDate = $_POST['reservStartDate'];
             $addResEndDate = $_POST['reservEndDate'];
             $user->newFullReservation($newLocCityId, $newLocStrName, $newLocHouseNum, $addResRoomId, $addResStartDate, $addResEndDate);
+            $roomData = $room->getRoomData($addResRoomId);
+
+            $mail = new PHPMailer(true);
+            $message = file_get_contents('Assets/email/reservation.html');
+
+            try {
+                //Server settings
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host = 'mail.nethely.hu';                      //Set the SMTP server to send through
+                $mail->SMTPAuth = true;                                   //Enable SMTP authentication
+                $mail->Username = 'hms@hemike.hu';                        //SMTP username
+                $mail->Password = '2Kecske9801@';                         //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                $mail->CharSet = 'UTF-8';
+
+                //Recipients
+                $mail->setFrom('no-reply@HMS.hu', 'HMS No-Reply');
+                $mail->addAddress($user->getEmail(), $user->getFirstname()." ".$user->getLastname());     //Add a recipient
+                $mail->addReplyTo('hms@hemike.hu', 'HMS Info');
+                $mail->addBCC('kris.kristof1@gmail.com');
+
+                //Attachments
+                //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+                //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+                //Content
+                $mail->isHTML(true);                                  //Set email format to HTML
+                $mail->Subject = 'Sikeres szoba foglalás!';
+                $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+                $mail->AddEmbeddedImage("Assets/images/rooms/".$roomData['image'], "roomPic", $roomData['image']);
+                $mail->Body = 'Embedded Image: <img alt="'.$roomData['image'].'" src="cid:roomPic">';
+                //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                $mail->send();
+                echo 'Message has been sent';
+            } catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            }
         }
 
         require_once 'View/layout/mainHeader.php';
@@ -82,14 +124,14 @@ class UserController extends Database {
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
 
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $admin->moveShowroomImage($imageID);
+        }
+
         require_once 'View/layout/mainHeader.php';
         require_once 'View/layout/sidebar.php';
         require_once 'View/Users/images.php';
         require_once 'View/layout/footer.php';
-
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $admin->moveShowroomImage($imageID);
-        }
     }
 
     public function home(): void {
@@ -114,7 +156,7 @@ class UserController extends Database {
 
         require_once 'View/layout/mainHeader.php';
         require_once 'View/layout/sidebar.php';
-
+        //require_once 'View/Users/contacts.php';
         require_once 'View/layout/footer.php';
     }
 
@@ -125,12 +167,9 @@ class UserController extends Database {
         $user->checkLoggedIn();
         $user->getUserData($_SESSION['id']);
 
-
         require_once 'View/layout/mainHeader.php';
         require_once 'View/layout/sidebar.php';
-
+        //require_once 'View/Users/access.php';
         require_once 'View/layout/footer.php';
-
-
     }
 }

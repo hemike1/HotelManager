@@ -39,9 +39,7 @@ class AuthController extends Database {
     }
 
     public function logout(){
-
         session_destroy();
         header('Location: /korondi/');
-
     }
 }

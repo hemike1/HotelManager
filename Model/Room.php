@@ -26,6 +26,28 @@ class Room extends Database {
 		return $response;
 	}
 
+    public function getRoomData($id): array {
+        $response = array();
+        $sql = $this->prepare('SELECT * FROM '.$GLOBALS['prefix'].'rooms WHERE roomId = ?');
+        if($sql->bind_param('i', $id)){
+            if($result = $sql->get_result()){
+                if($result->num_rows > 0){
+                    $row = $result->fetch_assoc();
+                    $temp['roomId'] = $row['roomId'];
+                    $temp['accomodation'] = $row['roomAccomodation'];
+                    $temp['size'] = $row['roomSize'];
+                    $temp['floor'] = $row['roomFloor'];
+                    $temp['number'] = $row['roomNumber'];
+                    $temp['image'] = $row['roomImageName'];
+                    $temp['features'] = $row['featureIcon'];
+                    $temp['price'] = $row['roomPrice'];
+                    $temp['description'] = $row['roomDescription'];
+                    $response[] = $temp;
+                }
+            }
+        }
+        return $response;
+    }
 	public function createNewRoom($accom, $size, $floor, $number, $imgName, $features, $price, $desc): void {
 		$sql = $this->prepare('INSERT INTO '.$GLOBALS['prefix'].'rooms(roomAccomodation, roomSize, roomFloor, roomNumber, roomImageName, roomFeatures, roomPrice, roomDescription) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
 		if($sql->bind_param('isiisiis', $accom, $size, $floor, $number, $imgName, $features, $price, $desc)){
