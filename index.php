@@ -26,75 +26,75 @@
 	switch($request) {
 		case '/korondi/login':
 		case '/korondi/':
-			$controller = new LoginController();
+			$controller = new AuthController();
 			$controller->login();
 			break;
 		case '/korondi/register':
-            $controller = new RegisterController();
+            $controller = new AuthController();
             $controller->register();
             break;
         case '/korondi/home':
-			$controller = new HomeController();
+			$controller = new UserController();
 			$controller->home();
 			break;
         case '/korondi/reservation':
-            $controller = new reservationController();
+            $controller = new UserController();
             $controller->reservation();
             break;
 		case '/korondi/logout':
-			$controller = new LoginController();
+			$controller = new AuthController();
 			$controller->logout();
 			break;
         case '/korondi/review':
-            $controller = new reviewConroller();
+            $controller = new UserController();
             $controller->review();
             break;
         case '/korondi/contacts':
-            $controller = new contactsController();
+            $controller = new UserController();
             $controller->contacts();
             break;
         case '/korondi/access':
-            $controller = new accessConroller();
+            $controller = new UserController();
             $controller->access();
             break;
         case '/korondi/images':
-            $controller = new imagesConroller();
+            $controller = new UserController();
             $controller->images();
             break;
         case '/korondi/profile':
-            $controller = new profileController();
+            $controller = new UserController();
             $controller->profile();
             break;
         case '/korondi/savedData':
-            $controller = new savedDataController();
+            $controller = new UserController();
             $controller->savedData();
             break;
         case '/korondi/bookie/reservations':
-            $controller = new reservationsConroller();
+            $controller = new AdminController();
             $controller->reservation();
             break;
         case '/korondi/admin/allreserv':
-            $controller = new allreservConroller();
+            $controller = new AdminController();
             $controller->allReserv();
             break;
         case '/korondi/admin/usermgmt':
-            $controller = new usermgmtConroller();
+            $controller = new AdminController();
             $controller->userMgmt();
             break;
         case '/korondi/admin/newroom':
-            $controller = new newroomController();
+            $controller = new AdminController();
             $controller->newroom();
             break;
 		case '/korondi/admin/allregs':
-			$controller = new allregisteredController();
+			$controller = new AdminController();
 			$controller->allRegistered();
 			break;
         case '/korondi/errors/noAccess':
-			http_response_code(403);
-			include('View/errors/403.php');
+			$controller = new ErrorController();
+            $controller->noAccess();
 			break;
         default:
-            http_response_code(404);
-            include('View/errors/404.php');
+            $controller = new ErrorController();
+            $controller->notFound();
             break;
 	}

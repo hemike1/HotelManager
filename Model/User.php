@@ -151,7 +151,7 @@ class User extends Database {
     }
 
     public function checkSuperUser(): void {
-        if($this->permission >= 2){
+        if($this->permission < 2){
             http_response_code(403);
             require_once 'View/errors/403.php';
             exit;
